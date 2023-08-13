@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         } else {
             // Redirige al usuario a la página especificada después de la autenticación exitosa
+            sessionStorage.setItem('isLoggedIn', 'true'); // Creamos estado "estáLoggeado" y lo hacemos verdadero
             window.location.href = "index.html";
         }
     }

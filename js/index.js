@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
+    if (!sessionStorage.getItem('isLoggedIn')) {
+        window.location.href = 'login.html'; // Redirigir al login.html si no ha iniciado sesión
+      }
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
         window.location = "products.html"
