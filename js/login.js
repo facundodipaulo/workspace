@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         //Se declaran las const
         const usuario = document.getElementById('user').value;
         const contrasena = document.getElementById('password').value;
+       
         //previene continuar = campo vacio
         if (usuario === "" || contrasena === "") {
             alert("Por favor, complete todos los campos.");
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             // Redirige al usuario a la página especificada después de la autenticación exitosa
             sessionStorage.setItem('isLoggedIn', 'true'); // Creamos estado "estáLoggeado" y lo hacemos verdadero
+            window.localStorage.setItem('usuario', usuario); // Guarda el dato de usuario para utilizarlo en otro documento JS
             window.location.href = "index.html";
         }
     }
@@ -26,5 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
         e.preventDefault(); // Evita el envío del formulario por defecto
         iniciarSesion();
     });
+    
 });
 
