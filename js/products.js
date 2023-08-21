@@ -1,12 +1,18 @@
 let container = document.querySelector(".product-container");
+let cat_name = 101
 
-fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
+function cargarDatos(newCatName) { //Funcion que carga los datos pasando como parametro la id de la categoria
+    cat_name = newCatName;
+
+const url = `https://japceibal.github.io/emercado-api/cats_products/${cat_name}.json`; // Id de categoría dentro url
+
+fetch(url)
     .then(response => response.json())
     .then(data => {
         data.products.forEach(category => {
             const productElement = document.createElement("div");
             productElement.className = "product";
-            
+
             const producto_json = document.getElementById("producto_json");
             producto_json.innerHTML = data.catName
 
@@ -25,12 +31,14 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
                 </div>
             </div>
         </div>
-            `;
-            
+        ` ;
+
             container.appendChild(productElement); 
         });
     })
     .catch(error => {
         console.error("Error al obtener el JSON:", error);
     });
-
+}
+const loadedId = window.localStorage.getItem("catID"); // Cargar variable id de categories.js
+cargarDatos(loadedId); // Cargar datos con la id cargada como parametro
