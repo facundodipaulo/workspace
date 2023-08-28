@@ -2,6 +2,9 @@ let container = document.querySelector(".product-container");
 let cat_name = 101
 let minCount = undefined;
 let maxCount = undefined;
+let currentCategoriesArray = [];
+let currentSortCriteria = undefined;
+const ORDER_DESC_BY_PRICE = "descPrice";
 
 
 function cargarDatos(newCatName) { //Funcion que carga los datos pasando como parametro la id de la categoria
@@ -50,6 +53,29 @@ fetch(url)
 const loadedId = window.localStorage.getItem("catID"); // Cargar variable id de categories.js
 cargarDatos(loadedId); // Cargar datos con la id cargada como parametro
 
+function sortAndShowCategories(sortCriteria, categoriesArray){
+    currentSortCriteria = sortCriteria;
+
+    if(categoriesArray != undefined){
+        currentCategoriesArray = categoriesArray;
+    }
+
+    if (sortCriteria === ORDER_DESC_BY_PRICE) {
+        return categoriesArray.slice().sort((a, b) => b.cost - a.cost);
+    }
+
+    currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
+
+    return cargarDatos(cat_name)
+
+    //Muestro los elementos ordenados
+    //cargarDatos(cat_name)
+}
+
+
+document.getElementById("sortAsc").addEventListener("click", function(){
+    sortAndShowCategories(ORDER_DESC_BY_PRICE);
+});
 
 document.getElementById("clearRangeFilter").addEventListener("click", function(){
     document.getElementById("rangeFilterCountMin").value = "";
@@ -61,6 +87,7 @@ document.getElementById("clearRangeFilter").addEventListener("click", function()
     cargarDatos(cat_name)
 
 });
+
 
 
 document.getElementById("rangeFilterCount").addEventListener("click", function(){
