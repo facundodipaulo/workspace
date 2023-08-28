@@ -1,8 +1,12 @@
 let container = document.querySelector(".product-container");
 let cat_name = 101
+let minCount = undefined;
+let maxCount = undefined;
+
 
 function cargarDatos(newCatName) { //Funcion que carga los datos pasando como parametro la id de la categoria
     cat_name = newCatName;
+    container.innerHTML = "";
 
 const url = `https://japceibal.github.io/emercado-api/cats_products/${cat_name}.json`; // Id de categoría dentro url
 
@@ -15,6 +19,9 @@ fetch(url)
 
             const producto_json = document.getElementById("producto_json");
             producto_json.innerHTML = data.catName
+
+            if (((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))) {
 
             productElement.innerHTML = `
             <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
@@ -34,7 +41,7 @@ fetch(url)
         ` ;
 
             container.appendChild(productElement); 
-        });
+    }});
     })
     .catch(error => {
         console.error("Error al obtener el JSON:", error);
@@ -42,3 +49,40 @@ fetch(url)
 }
 const loadedId = window.localStorage.getItem("catID"); // Cargar variable id de categories.js
 cargarDatos(loadedId); // Cargar datos con la id cargada como parametro
+
+
+document.getElementById("clearRangeFilter").addEventListener("click", function(){
+    document.getElementById("rangeFilterCountMin").value = "";
+    document.getElementById("rangeFilterCountMax").value = "";
+
+    minCount = undefined;
+    maxCount = undefined;
+
+    cargarDatos(cat_name)
+
+});
+
+
+document.getElementById("rangeFilterCount").addEventListener("click", function(){
+    //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+    //de productos por categoría.
+    minCount = document.getElementById("rangeFilterCountMin").value;
+    maxCount = document.getElementById("rangeFilterCountMax").value;
+
+    if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
+        minCount = parseInt(minCount);
+    }
+    else{
+        minCount = undefined;
+    }
+
+    if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
+        maxCount = parseInt(maxCount);
+    }
+    else{
+        maxCount = undefined;
+    }
+
+    cargarDatos(cat_name)
+
+});
