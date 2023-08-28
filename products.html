@@ -40,17 +40,21 @@
     <h2 class="text-center p-4">Productos</h2>
       <p class="lead">Verás aquí todos los productos de la categoria <span id="producto_json"></span></p>
 </center>
-
 <div class="container">
   <div class="row">
     <div class="col text-end">
       <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-        <input type="radio" class="btn-check" name="options" id="sortAsc">
-        <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
+        <div id="el_busq">
+          <label for="searchInput" class="font-weight-normal text-end my-2" type="search" id="bsq">Buscar</label>
+          <input type="search" class="form-control" id="searchInput">
+          <input type="radio" class="btn-check" name="options" id="sortAsc">
+        <label class="btn btn-light" id="pricedbtn" for="sortAsc"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
         <input type="radio" class="btn-check" name="options" id="sortDesc">
         <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
         <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
         <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i>Rel</label>
+        </div>  
+        
       </div>
     </div>
   </div>

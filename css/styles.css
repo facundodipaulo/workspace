@@ -188,3 +188,20 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+#searchInput {
+  text-align: center;
+  margin: 5px;
+}
+
+
+#pricedbtn {
+  margin-left: 5px;
+}
+
+#el_busq {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}

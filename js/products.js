@@ -6,6 +6,7 @@ let currentCategoriesArray = [];
 let currentSortCriteria = undefined;
 let currentPriceOrder = "none"; // none, ascending, descending
 let currentRelevanceOrder = "none"; // none, descending
+const searchInput = document.getElementById('searchInput');
 
 function cargarDatos(newCatName) {
     cat_name = newCatName;
@@ -121,3 +122,17 @@ document.getElementById("rangeFilterCount").addEventListener("click", function (
 
     cargarDatos(cat_name);
 });
+
+ searchInput.addEventListener('input', function() {
+    const searchText = searchInput.value.toLowerCase();
+    const productElements = document.querySelectorAll(".product");
+    productElements.forEach(productElement => {
+            const productName = productElement.querySelector("h4.mb-1").textContent.toLowerCase();
+            
+            if (productName.includes(searchText)) {
+                productElement.style.display = 'block';
+            } else {
+                productElement.style.display = 'none';
+            }
+        });
+    });
