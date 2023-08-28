@@ -128,8 +128,9 @@ document.getElementById("rangeFilterCount").addEventListener("click", function (
     const productElements = document.querySelectorAll(".product");
     productElements.forEach(productElement => {
             const productName = productElement.querySelector("h4.mb-1").textContent.toLowerCase();
+            const productDesc = productElement.querySelector("p.mb-1").textContent.toLowerCase();
             
-            if (productName.includes(searchText)) {
+            if (productName.includes(searchText) || productDesc.includes(searchText)) {
                 productElement.style.display = 'block';
             } else {
                 productElement.style.display = 'none';
