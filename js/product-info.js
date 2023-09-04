@@ -7,6 +7,7 @@ const catName = localStorage.getItem("catName");
 fetch(productInfoUrl)
     .then(response => response.json())
     .then(productData => {
+        
         const products = productData.products;
         const selectedProduct = products.find(product => product.id === parseInt(selectedProductId));
 
