@@ -8,6 +8,11 @@ let currentPriceOrder = "none"; // none, ascending, descending
 let currentRelevanceOrder = "none"; // none, descending
 const searchInput = document.getElementById('searchInput');
 
+function setProdID(id) { //Funcion que recibe una id y referencia a la página product-info
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
+
 function cargarDatos(newCatName) {
     cat_name = newCatName;
     container.innerHTML = "";
@@ -39,12 +44,14 @@ function cargarDatos(newCatName) {
 
                 const producto_json = document.getElementById("producto_json");
                 producto_json.innerHTML = data.catName;
+                localStorage.setItem("catName", data.catName);
+
 
                 if (((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
                     ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))) {
 
                     productElement.innerHTML = `
-                    <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
+                    <div onclick="setProdID(${category.id})" class="list-group-item list-group-item-action cursor-active id="clk"">
                         <div class="row">
                             <div class="col-3">
                                 <img src="${category.image}" alt="${category.description}" class="img-thumbnail">
@@ -59,6 +66,10 @@ function cargarDatos(newCatName) {
                         </div>
                     </div>
                     `;
+
+                    productElement.addEventListener("click", () => {
+                        setProdID(category.id); // Llama a la función con el ID del producto seleccionado
+                    });
 
                     container.appendChild(productElement);
                 }
