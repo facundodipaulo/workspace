@@ -32,7 +32,7 @@ fetch(productInfoUrl)
             <br>
             <p class="tipoDeDato">Imágenes ilustrativas:</p>
             <img src="${selectedProduct.image}" id="ilustracion"> <br><br>
-            <h5>Comentarios:</h5> <br>`;
+            `;
 
         } else {
             console.error("Producto no encontrado");
@@ -50,6 +50,7 @@ fetch(productInfoUrl)
     fetch (COMMENTS_URL)
     .then(response => response.json())
     .then(commentsData => {
+        container2.innerHTML += `<h5>Comentarios: </h5> <br>`
         commentsData.forEach(comment => {
             container2.innerHTML += `<div class="card mb-3">
             <p>${comment.user + " " + comment.dateTime + " " + stars(comment.score)}</p>
