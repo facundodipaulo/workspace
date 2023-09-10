@@ -1,3 +1,4 @@
+//Tomamos los datos de las id del localStorage
 const selectedProductId = localStorage.getItem("prodID");
 const selectedProductCategory = localStorage.getItem("catID");
 const container = document.getElementById("cont");
