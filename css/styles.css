@@ -220,3 +220,17 @@ a.custom-card:hover {
 #ilustracion:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
+
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.modo-noche {
+  background-color: #333;
+  color: #fff;
+}
+
+.modo-dia {
+  background-color: #fff;
+  color: #333;
+}

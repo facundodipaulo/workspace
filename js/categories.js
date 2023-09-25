@@ -6,6 +6,7 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
+
 function sortCategories(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
@@ -140,4 +141,37 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
+
+    //Tomamos constantes para el botón de "Cambiar tema" y el html
+    const toggleThemeButton = document.getElementById("toggleThemeButton");
+    const htmlElement = document.querySelector("html");
+    
+    // Al cargar la página, verifica si hay un tema almacenado en el localStorage y lo aplica si existe
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      htmlElement.setAttribute("data-bs-theme", storedTheme);
+    }
+    //Cambia el tema de light a dark o dark a light respectivamente
+    toggleThemeButton.addEventListener("click", () => {
+      const currentTheme = htmlElement.getAttribute("data-bs-theme");
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      htmlElement.setAttribute("data-bs-theme", newTheme);
+    
+      // Guarda el nuevo tema en el localStorage
+      localStorage.setItem("theme", newTheme);
+    });
+
+        const usuario = window.localStorage.getItem("usuario");
+        const datos = document.getElementById("data_user");
+
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html'; // Redirigir al login.html si no ha iniciado sesión
+          } else {
+            datos.innerHTML = usuario;
+          };
+
+
+
+
+
 });
