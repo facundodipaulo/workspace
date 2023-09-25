@@ -33,18 +33,5 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 
-    const modoNocheBtn = document.getElementById('modoNoche');
-    const modoDiaBtn = document.getElementById('modoDia');
-    const contenido = document.getElementById('contenido');
-
-    modoNocheBtn.addEventListener('click', () => {
-        contenido.classList.add('modo-noche');
-        contenido.classList.remove('modo-dia');
-    });
-
-    modoDiaBtn.addEventListener('click', () => {
-        contenido.classList.add('modo-dia');
-        contenido.classList.remove('modo-noche');
-    });
 
 });

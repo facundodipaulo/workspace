@@ -79,7 +79,38 @@ fetch(productInfoUrl)
                     `
         }
         }
-
+        const secondFetchUrl = `https://japceibal.github.io/emercado-api/products/${selectedProductId}.json`;
+    
+            //Fetch para el carrusel
+        fetch(secondFetchUrl)
+          .then(response => response.json())
+          .then(secondProductData => {
+            const images = secondProductData.images;
+            const productInfoContainer = document.getElementById('cont');
+            const carouselInner = document.querySelector('.carousel-inner');
+        
+            // Borrar el contenido interno del carrusel existente
+            carouselInner.innerHTML = '';
+        
+            images.forEach((imageUrl, index) => {
+              const carouselItem = document.createElement('div');
+              carouselItem.classList.add('carousel-item');
+            
+              // La primera imagen debe tener la clase "activa" para que sea el elemento activo inicial.
+              if (index === 0) {
+                carouselItem.classList.add('active');
+              }
+          
+              const imageElement = document.createElement('img');
+              imageElement.src = imageUrl;
+              imageElement.classList.add('d-block', 'w-100');
+              imageElement.alt = 'Imagen del Producto';
+          
+              carouselItem.appendChild(imageElement);
+              carouselInner.appendChild(carouselItem);
+            });
+          });
+        
         if (selectedProduct) {
             
             // Mostrar el nombre del producto en el contenedor
@@ -87,6 +118,31 @@ fetch(productInfoUrl)
             container.innerHTML = `
             <h1>${selectedProduct.name}</h1>
             <hr>
+            <p class="tipoDeDato">Imágenes ilustrativas:</p>
+            <div id ="ilustracion">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="..." class="d-block w-100" alt="imagen_1">
+                </div>
+                <div class="carousel-item">
+                  <img src="..." class="d-block w-100" alt="Imagen_2">
+                </div>
+                <div class="carousel-item">
+                  <img src="..." class="d-block w-100" alt="Imagen_3">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            </div> 
+            <br>
             <p class="tipoDeDato">Precio:</p>
             <p>${selectedProduct.currency + " " + selectedProduct.cost}</p>
             <br>
@@ -98,15 +154,12 @@ fetch(productInfoUrl)
             <br>
             <p class="tipoDeDato">Cantidad de vendidos:</p>
             <p>${selectedProduct.soldCount}</p>
-            <br>
-            <p class="tipoDeDato">Imágenes ilustrativas:</p>
-            <img src="${selectedProduct.image}" id="ilustracion"> <br><br>
+            <br><br>
+            <p class="tipoDeDato">Recomendados:</p> 
             <div class="card mb-3">
             ${relatedProducts (selectedProductPosition)}
             </div>
             `
-
-        
 
         } else {
             console.error("Producto no encontrado");
@@ -214,8 +267,6 @@ fetch(productInfoUrl)
 
 
     })
-
-    
 
 
 
