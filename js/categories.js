@@ -171,6 +171,19 @@ document.addEventListener("DOMContentLoaded", function(e){
           };
 
 
+        const cerrar_sesion = document.getElementById("cerrar_sesion");
+
+    
+    //Se crea un evento al hacer click que elimina la información de usuario del localStorage y redirige al usuario a login.html
+        cerrar_sesion.addEventListener("click", function () {
+        sessionStorage.removeItem('usuario');
+        window.location.href = "login.html"
+    })
+
+
+
+
+
 
 
 

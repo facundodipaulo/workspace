@@ -155,7 +155,7 @@ fetch(productInfoUrl)
             <p class="tipoDeDato">Cantidad de vendidos:</p>
             <p>${selectedProduct.soldCount}</p>
             <br><br>
-            <p class="tipoDeDato">Recomendados:</p> 
+            <p class="tipoDeDato">Relacionados:</p> 
             <div class="card mb-3">
             ${relatedProducts (selectedProductPosition)}
             </div>
