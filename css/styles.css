@@ -250,3 +250,7 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+#cartproductimg {
+  width: 10vb
+}
