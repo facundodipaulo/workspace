@@ -50,27 +50,53 @@ function showCategoriesList(){
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
 
-            htmlContentToAppend += `
-            <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${category.name}</h4>
-                            <small class="text-muted">${category.productCount} artículos</small>
+                if (window.innerWidth <= 500) {
+                    htmlContentToAppend += `
+                    <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail text_description">
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 class="mb-1">${category.name}</h4>
+                                    <small class="text-muted">${category.productCount} artículos</small>
+                                </div>
+                                <p class="mb-1">${category.description}</p>
+                            </div>
                         </div>
-                        <p class="mb-1">${category.description}</p>
                     </div>
-                </div>
-            </div>
-            `
-        }
+                    `;
+                } else {
+                    htmlContentToAppend += `
+                    <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail text_description">
+                            </div>
+                            <div class="col">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 class="mb-1">${category.name}</h4>
+                                    <small class="text-muted">${category.productCount} artículos</small>
+                                </div>
+                                <p class="mb-1">${category.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }
+            }
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }
+
+
+// Agrega un evento para ejecutar showCategoriesList cuando la ventana cambia de tamaño
+window.addEventListener('resize', showCategoriesList);
+
+// Llama a showCategoriesList inicialmente para cargar la lista según el ancho actual
+showCategoriesList();
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
     currentSortCriteria = sortCriteria;

@@ -224,6 +224,8 @@ a.custom-card:hover {
 
 body {
   transition: background-color 0.3s, color 0.3s;
+  width: 100%; 
+  padding-top: 56px;
 }
 
 .modo-noche {
@@ -276,4 +278,40 @@ tr:nth-child(even) {
   margin-top: -07%;
   margin-right: 05%;
   position: relative;
+}
+
+nav{
+  top: 0; 
+  left: 0; 
+  width: 100%;
+  z-index:999 ;
+}
+@media (max-width: 1400px) {
+  #buy {
+    position: absolute;
+    right: 100px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    
+  }
+}
+@media (max-width: 420px) {
+  #buy {
+    padding-left: 25px;
+    padding-right: 25px;
+    transform: translateX(-50%); /* Centra el botón horizontalmente */
+  }
+}
+@media (max-width: 320px) {
+  #buy {
+    padding-left: 25px;
+    padding-right: 25px;
+    transform: translateX(0%); /* Centra el botón horizontalmente */
+  }
+}
+@media (max-width: 320px) {
+  #commentBox {
+    width: 80%; /* Puedes ajustar el ancho según tus necesidades */
+    font-size: 14px; /* Puedes ajustar el tamaño de fuente según tus necesidades */
+  }
 }
