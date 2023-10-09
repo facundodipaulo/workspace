@@ -29,17 +29,18 @@ nav a {
 }
 
 .jumbotron {
-  height: 50vh;
+  height: 30vw; /* Establecer la altura en relación al ancho de la ventana gráfica */
   padding: 5em inherit;
   margin-bottom: 0;
   background-color: #53C0FB;
   background: url('../img/cover_back.png');
-  background-size: cover;
+  background-size: cover; /* Hacer que la imagen cubra toda la pantalla */
   background-position: center;
   background-repeat: no-repeat;
   color: black;
   font-weight: bold;
 }
+
 
 @media (min-width: 768px) {
   .jumbotron {
