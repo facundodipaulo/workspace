@@ -4,13 +4,28 @@ const selectedProductCategory = localStorage.getItem("catID");
 const container = document.getElementById("cont");
 const productInfoUrl = `https://japceibal.github.io/emercado-api/cats_products/${selectedProductCategory}.json`;
 const catName = localStorage.getItem("catName");
+const buyButton = document.getElementById("buy");
+let selectedProduct;
+
+function compra(selectedProduct) {
+  
+    console.log(selectedProduct);
+    localStorage.setItem("imagenProducto", selectedProduct.image);
+    localStorage.setItem("nombreProducto", selectedProduct.name);
+    localStorage.setItem("costProducto", selectedProduct.cost);
+    localStorage.setItem("currencyProducto", selectedProduct.currency);
+
+  
+}
+
+
 
 fetch(productInfoUrl)
     .then(response => response.json())
     .then(productData => {
         
         const products = productData.products;
-        const selectedProduct = products.find(product => product.id === parseInt(selectedProductId));
+        selectedProduct = products.find(product => product.id === parseInt(selectedProductId));
         //Creamos una constante con la posición en el array products del selectedProduct
         const selectedProductPosition = products.indexOf(selectedProduct);
 
@@ -116,7 +131,7 @@ fetch(productInfoUrl)
             // Mostrar el nombre del producto en el contenedor
             //Más abajo se llama a la función relatedProducts, utilizando la posicion del producto seleccionado en el array como parámetro
             container.innerHTML = `
-            <h1>${selectedProduct.name}</h1>
+            <h1>${selectedProduct.name}</h1> <button id="buy" onclick="compra(selectedProduct)" class="btn btn-success" value="comprar">Comprar</button>
             <hr>
             <p class="tipoDeDato">Imágenes ilustrativas:</p>
             <div id ="ilustracion">

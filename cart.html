@@ -53,8 +53,52 @@
             <th>Sub Total</th>
             </tr>
         </table>
+        
         </div>
       </div>
+    </div>
+    <div id="formCompra" class="container mt-4">
+      <form>
+        <hr>
+        <h5>Tipo de envío</h5> <br>
+        <input type="radio" name="envio">
+        <label for="envio">Premium 2 a 5 días (15%)</label> <br>
+        
+        <input type="radio" name="envio">
+        <label for="envio">Express 5 a 8 días (7%)</label> <br>
+        
+        <input type="radio" name="envio">
+        <label for="envio">Standard 12 a 15 días (5%)</label> <br><br>
+
+        <h5>Dirección de envío</h5>
+
+        <div class="row align-items-start" id="campos">
+          <div class="col-md-6">
+            <label for="calle">Calle</label><br>
+            <input type="text" name="calle">
+          </div>
+          <div class="col-md-6">
+            <label for="numero">Número</label><br>
+            <input class="input" type="text" name="numero" class="mb-2"><br>
+          </div>
+          <div class="col-md-6">
+            <label for="esquina">Esquina</label><br>
+            <input class="input" type="text" name="esquina">
+          </div>
+
+        </div>
+        
+        
+
+
+        
+
+
+        
+
+
+
+      </form>
     </div>
   </main>
   <footer class="text-muted">

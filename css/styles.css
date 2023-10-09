@@ -254,3 +254,25 @@ tr:nth-child(even) {
 #cartproductimg {
   width: 10vb
 }
+
+#campos {
+  margin-right: 60%;
+  display: flex;
+  flex-wrap: wrap
+}
+
+@media screen and (max-width: 1024px) {
+  #campos  {
+
+      margin-bottom: 10%;
+      margin-right: 10%; 
+  }
+}
+
+#buy {
+  float: right;
+  display: block;
+  margin-top: -07%;
+  margin-right: 05%;
+  position: relative;
+}
