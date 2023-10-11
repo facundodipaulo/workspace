@@ -191,7 +191,7 @@ document.getElementById("rangeFilterCount").addEventListener("click", function (
     })
 
 
-
+    const datos = document.getElementById("data_user");
     if (!sessionStorage.getItem('isLoggedIn')) {
         window.location.href = 'login.html'; // Redirigir al login.html si no ha iniciado sesión
       } else {

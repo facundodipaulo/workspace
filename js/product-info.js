@@ -105,7 +105,7 @@ fetch(productInfoUrl)
             const carouselInner = document.querySelector('.carousel-inner');
         
             // Borrar el contenido interno del carrusel existente
-            carouselInner.innerHTML = '';
+            carouselInner.innerHTML = "";
         
             images.forEach((imageUrl, index) => {
               const carouselItem = document.createElement('div');
