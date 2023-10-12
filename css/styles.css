@@ -257,6 +257,9 @@ tr:nth-child(even) {
 #cartproductimg {
   width: 10vb
 }
+.cuadradito {
+  width:20% ; 
+}
 
 #campos {
   margin-right: 60%;
@@ -303,6 +306,9 @@ nav{
   }
 }
 @media (max-width: 320px) {
+  .newInputCant,.inputCant{
+    width: 100%;
+  }
   #buy {
     padding-left: 25px;
     padding-right: 25px;

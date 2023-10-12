@@ -32,6 +32,15 @@
           <li class="nav-item">
           </li>
         </ul>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="data_user" data-bs-toggle="dropdown" aria-expanded="false">
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="index.html">Inicio</a></li>
+            <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+            <li><a class="dropdown-item" href="#" id="cerrar_sesion">Cerrar sesión</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
@@ -61,14 +70,15 @@
       <form>
         <hr>
         <h5>Tipo de envío</h5> <br>
-        <input type="radio" name="envio">
-        <label for="envio">Premium 2 a 5 días (15%)</label> <br>
-        
-        <input type="radio" name="envio">
-        <label for="envio">Express 5 a 8 días (7%)</label> <br>
-        
-        <input type="radio" name="envio">
-        <label for="envio">Standard 12 a 15 días (5%)</label> <br><br>
+        <input class="envio" type="radio" name="envio" id="premium">
+        <label for="premium">Premium 2 a 5 días (15%)</label><br>
+
+        <input class="envio" type="radio" name="envio" id="express">
+        <label for="express">Express 5 a 8 días (7%)</label><br>
+
+        <input class="envio" type="radio" name="envio" id="standard">
+        <label for="standard">Standard 12 a 15 días (5%)</label><br><br>
+
 
         <h5>Dirección de envío</h5>
 
