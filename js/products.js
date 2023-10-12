@@ -46,69 +46,38 @@ function cargarDatos(newCatName) {
                 producto_json.innerHTML = data.catName;
                 localStorage.setItem("catName", data.catName);
 
-                // Obtén el ancho de la pantalla
-                const screenWidth = window.innerWidth;
-
-                if (screenWidth >= 500) {
+                if (((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
+                    ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))) {
+                        
                     productElement.innerHTML = `
-                        <div onclick="setProdID(${category.id})" class="list-group-item list-group-item-action cursor-active" id="clk">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="${category.image}" alt="${category.description}" class="img-thumbnail">
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h4 class="mb-1">${category.name} - ${category.currency} ${category.cost}</h4>
-                                        <small class="text-muted">${category.soldCount} artículos</small>
-                                    </div>
-                                    <p class="mb-1">${category.description}</p>
-                                </div>
-                            </div>
+                    <div onclick="setProdID(${category.id})" class="list-group-item list-group-item-action cursor-active" id="clk">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-12">
+                            <img src="${category.image}" alt="${category.description}" class="img-thumbnail">
                         </div>
-                    `;
-                } else {
-                    productElement.innerHTML = `
-                        <div onclick="setProdID(${category.id})" class="list-group-item list-group-item-action cursor-active" id="clk">
-                            <div class="row">
-                                <div class="col-12">
-                                    <img src="${category.image}" alt="${category.description}" class="img-thumbnail">
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h4 class="mb-1">${category.name} - ${category.currency} ${category.cost}</h4>
-                                        <small class="text-muted">${category.soldCount} artículos</small>
-                                    </div>
-                                    <p class="mb-1">${category.description}</p>
-                                </div>
+                        <div class="col-lg-9 col-md-8 col-sm-12">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">${category.name} - ${category.currency} ${category.cost}</h4>
+                                <small class="text-muted text-end">${category.soldCount} artículos</small>
                             </div>
+                            <p class="mb-1">${category.description}</p>
                         </div>
+                    </div>
+                </div>
                     `;
-                }
 
                 productElement.addEventListener("click", () => {
                     setProdID(category.id); // Llama a la función con el ID del producto seleccionado
                 });
 
                 container.appendChild(productElement);
+                }
             });
         })
         .catch(error => {
             console.error("Error al obtener el JSON:", error);
         });
-}
-// Función para cargar los datos basados en el ancho de la pantalla
-function cargarDatosSegunAnchoPantalla() {
-    const screenWidth = window.innerWidth;
-    cargarDatos(cat_name, screenWidth);
-}
-
-// Agregar un controlador de eventos para el evento 'resize'
-window.addEventListener('resize', cargarDatosSegunAnchoPantalla);
-
-// ...
-
-// Cuando se carga inicialmente la página, también cargamos los datos según el ancho de la pantalla actual
-cargarDatosSegunAnchoPantalla();
+    }                    
 
 const sortAscPriceBtn = document.getElementById("sortAsc");
 const sortDescPriceBtn = document.getElementById("sortDesc");
