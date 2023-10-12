@@ -187,8 +187,8 @@ document.addEventListener("DOMContentLoaded", function(e){
       localStorage.setItem("theme", newTheme);
     });
 
-        const usuario = window.localStorage.getItem("usuario");
-        const datos = document.getElementById("data_user");
+    const usuario = window.localStorage.getItem("usuario");
+    const datos = document.getElementById("data_user");
 
         if (!sessionStorage.getItem('isLoggedIn')) {
             window.location.href = 'login.html'; // Redirigir al login.html si no ha iniciado sesión
@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function(e){
           };
 
 
-        const cerrar_sesion = document.getElementById("cerrar_sesion");
+    const cerrar_sesion = document.getElementById("cerrar_sesion");
 
     
     //Se crea un evento al hacer click que elimina la información de usuario del localStorage y redirige al usuario a login.html
@@ -205,12 +205,4 @@ document.addEventListener("DOMContentLoaded", function(e){
         sessionStorage.removeItem('usuario');
         window.location.href = "login.html"
     })
-
-
-
-
-
-
-
-
 });

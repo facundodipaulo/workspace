@@ -14,11 +14,7 @@ function compra(selectedProduct) {
     localStorage.setItem("nombreProducto", selectedProduct.name);
     localStorage.setItem("costProducto", selectedProduct.cost);
     localStorage.setItem("currencyProducto", selectedProduct.currency);
-
-  
 }
-
-
 
 fetch(productInfoUrl)
     .then(response => response.json())

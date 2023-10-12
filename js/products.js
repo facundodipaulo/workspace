@@ -8,6 +8,7 @@ let currentPriceOrder = "none"; // none, ascending, descending
 let currentRelevanceOrder = "none"; // none, descending
 const searchInput = document.getElementById('searchInput');
 
+//Funcion que recibe una id y referencia a la página product-info
 function setProdID(id) {
     localStorage.setItem("prodID", id);
     window.location = "product-info.html";
