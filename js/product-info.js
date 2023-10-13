@@ -8,7 +8,7 @@ const buyButton = document.getElementById("buy");
 let selectedProduct;
 
 function compra(selectedProduct) {
-  
+  //Guarda en el local storage todos los datos relevantes del producto seleccionado
     console.log(selectedProduct);
     localStorage.setItem("imagenProducto", selectedProduct.image);
     localStorage.setItem("nombreProducto", selectedProduct.name);
