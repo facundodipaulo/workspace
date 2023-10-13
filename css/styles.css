@@ -240,7 +240,6 @@ body {
 
 .tablita {
   font-family: arial, sans-serif;
-  border-collapse: collapse;
   width: 100%;
 }
 
@@ -250,9 +249,6 @@ td, th {
   padding: 8px;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
 
 #cartproductimg {
   width: 10vb
