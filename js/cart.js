@@ -29,7 +29,7 @@ fetch(url)
       tablaTitulos.appendChild(tableRow);
     });
 
-    // Función para crear una fila de la tabla con un botón de eliminación
+   
     function createTableRow(producto) {
       const tableRow = document.createElement("tr");
       tableRow.innerHTML = `
@@ -50,7 +50,7 @@ fetch(url)
       btnEliminar.addEventListener("click", () => {
         // Elimina la fila de la tabla
         tablaTitulos.removeChild(tableRow);
-        // También puedes eliminar el producto de la lista de productosEnCarrito si lo deseas
+        
       });
 
       return tableRow;
