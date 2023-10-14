@@ -250,7 +250,7 @@ td, th {
 }
 
 
-#cartproductimg {
+.cartproductimg {
   width: 10vb
 }
 .cuadradito {
@@ -271,13 +271,7 @@ td, th {
   }
 }
 
-#buy {
-  float: right;
-  display: block;
-  margin-top: -07%;
-  margin-right: 05%;
-  position: relative;
-}
+
 
 nav{
   top: 0; 
@@ -287,17 +281,12 @@ nav{
 }
 @media (max-width: 1400px) {
   #buy {
-    position: absolute;
-    right: 100px;
-    margin-bottom: 10px;
     font-size: 10px;
-    
   }
 }
 @media (max-width: 420px) {
   #buy {
-    padding-left: 25px;
-    padding-right: 25px;
+    margin-left: 35px;
     transform: translateX(-50%); /* Centra el botón horizontalmente */
   }
 }
@@ -306,9 +295,8 @@ nav{
     width: 100%;
   }
   #buy {
-    padding-left: 25px;
-    padding-right: 25px;
-    transform: translateX(0%); /* Centra el botón horizontalmente */
+    margin-left: 35px;
+    transform: translateX(-50%); /* Centra el botón horizontalmente */
   }
 }
 @media (max-width: 320px) {

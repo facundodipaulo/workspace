@@ -8,12 +8,35 @@ const buyButton = document.getElementById("buy");
 let selectedProduct;
 
 function compra(selectedProduct) {
-  //Guarda en el local storage todos los datos relevantes del producto seleccionado
-    console.log(selectedProduct);
-    localStorage.setItem("imagenProducto", selectedProduct.image);
-    localStorage.setItem("nombreProducto", selectedProduct.name);
-    localStorage.setItem("costProducto", selectedProduct.cost);
-    localStorage.setItem("currencyProducto", selectedProduct.currency);
+  // Obtiene la lista de productos del local storage (si existe)
+  let productsInCart = JSON.parse(localStorage.getItem("productosEnCarrito")) || [];
+
+  // Agrega el producto actual a la lista
+  productsInCart.push({
+      imagen: selectedProduct.image,
+      nombre: selectedProduct.name,
+      costo: selectedProduct.cost,
+      moneda: selectedProduct.currency,
+  });
+
+  // Guarda la lista actualizada en el local storage
+  localStorage.setItem("productosEnCarrito", JSON.stringify(productsInCart));
+
+  // Muestra un mensaje de éxito
+  const successMessage = document.createElement("div");
+  successMessage.textContent = "Agregado con éxito";
+  successMessage.style.position = "fixed";
+  successMessage.style.top = "50px";
+  successMessage.style.right = "10px";
+  successMessage.style.backgroundColor = "green";
+  successMessage.style.color = "white";
+  successMessage.style.padding = "10px";
+  document.body.appendChild(successMessage);
+
+  // Desaparece el mensaje después de 3 segundos (3000 milisegundos)
+  setTimeout(() => {
+    successMessage.remove();
+  }, 3000);
 }
 
 fetch(productInfoUrl)
@@ -101,7 +124,7 @@ fetch(productInfoUrl)
             const carouselInner = document.querySelector('.carousel-inner');
         
             // Borrar el contenido interno del carrusel existente
-            carouselInner.innerHTML = "";
+            carouselInner.innerHTML = '';
         
             images.forEach((imageUrl, index) => {
               const carouselItem = document.createElement('div');
@@ -127,7 +150,7 @@ fetch(productInfoUrl)
             // Mostrar el nombre del producto en el contenedor
             //Más abajo se llama a la función relatedProducts, utilizando la posicion del producto seleccionado en el array como parámetro
             container.innerHTML = `
-            <h1>${selectedProduct.name}</h1> <button id="buy" onclick="compra(selectedProduct)" class="btn btn-success" value="comprar">Comprar</button>
+            <h1>${selectedProduct.name}</h1> 
             <hr>
             <p class="tipoDeDato">Imágenes ilustrativas:</p>
             <div id ="ilustracion">
@@ -143,6 +166,7 @@ fetch(productInfoUrl)
                   <img src="..." class="d-block w-100" alt="Imagen_3">
                 </div>
               </div>
+              
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -152,8 +176,9 @@ fetch(productInfoUrl)
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-            </div> 
-            <br>
+            </div> <br>
+            <button id="buy" onclick="compra(selectedProduct)" class="btn btn-success" value="comprar">Comprar</button>
+            <br><br>
             <p class="tipoDeDato">Precio:</p>
             <p>${selectedProduct.currency + " " + selectedProduct.cost}</p>
             <br>
@@ -275,9 +300,8 @@ fetch(productInfoUrl)
             <p>${commentText}</p>
             </div>
             `;
+
+
     })
-    
-
-
 
 
