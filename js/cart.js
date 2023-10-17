@@ -13,10 +13,27 @@ const formEnvio = document.getElementById("formularioEnvio");
 const premium = document.getElementById("premium");
 const express = document.getElementById("express");
 const standard = document.getElementById("standard");
+let modal = document.getElementById("modal");
+let select = document.getElementById("seleccionar_pago");
+let cerrar_modal = document.getElementsByClassName("close")[0];
 let arraySubtotales = [];
 let sumaSubtotalValor = 0;
 let costoEnvio = 0;
 let totalTotal = 0;
+
+select.addEventListener("click", function() {
+  modal.style.display = "block";
+});
+
+cerrar_modal.addEventListener("click", function() {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", function(e) {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  };
+});
 
 function actualizarPrecioTotal() {
   totalTotal = sumaSubtotalValor + costoEnvio;

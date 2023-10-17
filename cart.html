@@ -144,11 +144,44 @@
             </div>
           </div>
         </div>
-
-
-
-
+      </div>
     </div>
+
+
+        <div id="forma_pago">
+          <br><hr>
+          <h5>Forma de pago</h5><br>
+          <p><span><a href="#modal" id="seleccionar_pago">Seleccionar</a></span></p>
+          <br><button class="btn btn-primary">Finalizar compra</button>
+        </div>
+
+        <div id="modal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <form>
+              <strong><h4>Forma de pago</h4></strong><br><hr>
+              <input class="form-check-input" type="radio" name="paymethod"> <label for="paymethod"><h5>Tarjeta de crédito</h5></label><br><br>
+               <label for="num">Número de tarjeta:</label>    <input type="text" name="num" id="num">
+               <label for="cod">Código de seguridad:</label>    <input type="text" maxlength="4" name="cod" id="cod"><br><br>
+               <label for="cod">Fecha de vencimiento (MM/AA):</label>    <input type="date" name="date" id="date"> <br><br><hr>
+               <input class="form-check-input" type="radio" name="paymethod"> <label for="paymethod"><h5>Transferencia bancaria</h5></label><br><br>
+               <label for="num">Número de cuenta:</label>    <input type="text" name="num" id="num">
+            </form>
+          </div>
+        
+        </div>
+
+
+
+
+        
+
+
+
+
+    
   </main>
   <footer class="text-muted">
     <div class="container">
