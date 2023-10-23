@@ -20,6 +20,53 @@ let arraySubtotales = [];
 let sumaSubtotalValor = 0;
 let costoEnvio = 0;
 let totalTotal = 0;
+const creditbtn = document.getElementById("creditbtn");
+const bankbtn = document.getElementById("bankbtn");
+const cuentanum = document.getElementById("cuentanum");
+const num = document.getElementById("num");
+const cod = document.getElementById("cod");
+const date = document.getElementById("date");
+
+    num.disabled = true;
+    cod.disabled = true;
+    date.disabled = true;
+    cuentanum.disabled = true;
+
+
+
+
+creditbtn.addEventListener("change", function () {
+  if(creditbtn.checked) {
+    num.disabled = false;
+    cod.disabled = false;
+    date.disabled = false;
+
+
+    cuentanum.disabled = true;
+ 
+  }
+})
+
+bankbtn.addEventListener("change", function() {
+  if (bankbtn.checked) {
+    cuentanum.disabled = false;
+
+    num.disabled = true;
+    cod.disabled = true;
+    date.disabled = true;
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
 
 select.addEventListener("click", function() {
   modal.style.display = "block";
@@ -201,6 +248,8 @@ fetch(url)
 botonLimpiarLocalStorage.addEventListener("click", limpiarCarrito);
 
 actualizarSubtotales();
+
+
 
 
   
