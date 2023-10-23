@@ -27,6 +27,7 @@ const num = document.getElementById("num");
 const cod = document.getElementById("cod");
 const date = document.getElementById("date");
 const finCompra = document.getElementById("finCompra");
+const seleccionar_pago = document.getElementById("seleccionar_pago");
 
 
     num.disabled = true;
@@ -275,27 +276,36 @@ botonFinalizarCompra.addEventListener("click", function (event) {
   if (calle.value === "" || numero.value === "" || esquina.value === "") {
     showAlert("Los campos de dirección no pueden estar vacíos.");
     if (calle.value === "") {
+      calle.classList.remove('is-valid');
       calle.classList.add('is-invalid');
-    } else {
-      calle.classList.remove('is-invalid');
-      calle.classList.add('is-valid');
     }
 
   if (numero.value === "") {
+    numero.classList.remove('is-valid');
       numero.classList.add('is-invalid');
-    } else {
-      numero.classList.remove('is-invalid');
-      numero.classList.add('is-valid');
     }
 
   if (esquina.value === "") {
+    esquina.classList.remove('is-valid');
   esquina.classList.add('is-invalid');
   esquina.preventDefault(); // Evita el envío del formulario
-} else {
-  esquina.classList.remove('is-invalid');
-  esquina.classList.add('is-valid');
 }
-    return;
+
+} else {
+  if (calle.value !== null) {
+    calle.classList.remove('is-invalid');
+    calle.classList.add('is-valid');
+  }
+
+  if (numero.value !== null) {
+    numero.classList.remove('is-invalid');
+    numero.classList.add('is-valid');
+  }
+
+  if (esquina.value !== null) {
+    esquina.classList.remove('is-invalid');
+    esquina.classList.add('is-valid');
+  }
 }
 
 const tiposDeEnvio = document.getElementById("tiposDeEnvio");
@@ -322,6 +332,8 @@ const tiposDeEnvio = document.getElementById("tiposDeEnvio");
   const formaPagoSeleccionada = document.querySelector("input[name='paymethod']:checked");
   if (!formaPagoSeleccionada) {
     showAlert("Debes seleccionar una forma de pago.");
+    seleccionar_pago.classList.remove('is-valid');
+    seleccionar_pago.classList.add('is-invalid');
     return;
   }
 
@@ -336,7 +348,7 @@ const tiposDeEnvio = document.getElementById("tiposDeEnvio");
   });
 
   if (!camposCompletos) {
-    showAlert("Debes completar todos los campos habilitados en el modal.");
+    showAlert("Debes completar todos los datos de pago.");
     return;
   }
 
