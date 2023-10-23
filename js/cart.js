@@ -251,10 +251,6 @@ botonLimpiarLocalStorage.addEventListener("click", limpiarCarrito);
 
 actualizarSubtotales();
 
-const calle = document.getElementById("calle");
-const numero = document.getElementById("numero");
-const esquina = document.getElementById("esquina");
-
 finCompra.addEventListener("click", function (event) {
   // Evita el envío del formulario si no pasa la validación
   if (!formEnvio.checkValidity()) {
@@ -262,32 +258,7 @@ finCompra.addEventListener("click", function (event) {
     event.stopPropagation();
   }
 
-  // Valida el campo de entrada de la calle
-  calle.addEventListener("input", function () {
-    if (calle.value === "") {
-      calle.classList.add('is-invalid');
-    } else {
-      calle.classList.remove('is-invalid');
-      calle.classList.add('is-valid');
-    }
-  });
-
-  numero.addEventListener("input", function () {
-    if (numero.value === "") {
-      numero.classList.add('is-invalid');
-    } else {
-      numero.classList.remove('is-invalid');
-      numero.classList.add('is-valid');
-    }
-  });
-
-  if (esquina.value === "") {
-  esquina.classList.add('is-invalid');
-  esquina.preventDefault(); // Evita el envío del formulario
-} else {
-  esquina.classList.remove('is-invalid');
-  esquina.classList.add('is-valid');
-}
+  
 });
 const botonFinalizarCompra = document.querySelector("button.btn.btn-primary");
 const alertContainer = document.getElementById("alert-container");
@@ -296,20 +267,44 @@ botonFinalizarCompra.addEventListener("click", function (event) {
   event.preventDefault(); // Evita que el formulario se envíe
 
   // Obtén los valores de los campos de dirección
-  const calle = document.querySelector("input[name='calle']").value;
-  const numero = document.querySelector("input[name='numero']").value;
-  const esquina = document.querySelector("input[name='esquina']").value;
+  const calle = document.getElementById("calle");
+  const numero = document.getElementById("numero");
+  const esquina = document.getElementById("esquina");
 
   // Verifica que los campos de dirección no estén vacíos
-  if (calle === "" || numero === "" || esquina === "") {
+  if (calle.value === "" || numero.value === "" || esquina.value === "") {
     showAlert("Los campos de dirección no pueden estar vacíos.");
+    if (calle.value === "") {
+      calle.classList.add('is-invalid');
+    } else {
+      calle.classList.remove('is-invalid');
+      calle.classList.add('is-valid');
+    }
+
+  if (numero.value === "") {
+      numero.classList.add('is-invalid');
+    } else {
+      numero.classList.remove('is-invalid');
+      numero.classList.add('is-valid');
+    }
+
+  if (esquina.value === "") {
+  esquina.classList.add('is-invalid');
+  esquina.preventDefault(); // Evita el envío del formulario
+} else {
+  esquina.classList.remove('is-invalid');
+  esquina.classList.add('is-valid');
+}
     return;
-  }
+}
+
+const tiposDeEnvio = document.getElementById("tiposDeEnvio");
 
   // Verifica que se haya seleccionado una forma de envío
   const envioSeleccionado = document.querySelector("input[name='envio']:checked");
   if (!envioSeleccionado) {
     showAlert("Debes seleccionar una forma de envío.");
+    tiposDeEnvio.classList.add('is-invalid');
     return;
   }
 
@@ -346,13 +341,13 @@ botonFinalizarCompra.addEventListener("click", function (event) {
   }
 
   // Si todas las validaciones pasan, puedes enviar el formulario o realizar otras acciones
-  showAlert("Compra realizada con éxito. ¡Gracias!");
+  showAlert("Compra realizada con éxito. ¡Gracias!", true);
   // Aquí puedes agregar el código para enviar el formulario o realizar acciones adicionales.
 });
 
-function showAlert(message) {
+function showAlert(message, success = false) {
   const alertElement = document.createElement("div");
-  alertElement.className = "alert alert-danger";
+  alertElement.className = `alert ${success ? 'alert-success' : 'alert-danger'}`;
   alertElement.textContent = message;
   alertContainer.appendChild(alertElement);
 

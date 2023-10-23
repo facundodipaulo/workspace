@@ -344,3 +344,7 @@ nav{
   text-decoration: none;
   cursor: pointer;
 }
+
+#alert-container {
+  margin-left: 50%;
+}

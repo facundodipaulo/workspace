@@ -49,6 +49,7 @@
     </div>
   </nav>
   <main>
+    <div id="alert-container" class="alert fixed-top"></div>
     <div class="container">
       <div class="text-center p-4">
         <h4>Carrito de Compras</h4>
@@ -79,6 +80,7 @@
       <form id="formularioEnvio" class="needs-validation" novalidate>
         <hr>
         <h5>Tipo de envío</h5> <br>
+        <div id="tiposDeEnvio">
         <input class="envio" type="radio" name="envio" id="premium">
         <label for="premium">Premium 2 a 5 días (15%)</label><br>
 
@@ -87,6 +89,16 @@
 
         <input class="envio" type="radio" name="envio" id="standard">
         <label for="standard">Standard 12 a 15 días (5%)</label><br><br>
+
+        <div class="valid-feedback">
+          Verificado
+      </div>
+
+      <div class="invalid-feedback">
+        Elija el tipo de envío deseado
+      </div>
+
+      </div>
 
 
         <h5>Dirección de envío</h5>
@@ -177,7 +189,7 @@
         </div>
 
 
-        <div id="alert-container"></div>
+        
 
         
         <div id="modal" class="modal">
