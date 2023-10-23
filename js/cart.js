@@ -289,7 +289,78 @@ finCompra.addEventListener("click", function (event) {
   esquina.classList.add('is-valid');
 }
 });
+const botonFinalizarCompra = document.querySelector("button.btn.btn-primary");
+const alertContainer = document.getElementById("alert-container");
 
+botonFinalizarCompra.addEventListener("click", function (event) {
+  event.preventDefault(); // Evita que el formulario se envíe
+
+  // Obtén los valores de los campos de dirección
+  const calle = document.querySelector("input[name='calle']").value;
+  const numero = document.querySelector("input[name='numero']").value;
+  const esquina = document.querySelector("input[name='esquina']").value;
+
+  // Verifica que los campos de dirección no estén vacíos
+  if (calle === "" || numero === "" || esquina === "") {
+    showAlert("Los campos de dirección no pueden estar vacíos.");
+    return;
+  }
+
+  // Verifica que se haya seleccionado una forma de envío
+  const envioSeleccionado = document.querySelector("input[name='envio']:checked");
+  if (!envioSeleccionado) {
+    showAlert("Debes seleccionar una forma de envío.");
+    return;
+  }
+
+  // Verifica que la cantidad para cada artículo sea mayor a 0
+  const cantidades = document.querySelectorAll("input.inputCant");
+  for (const cantidadInput of cantidades) {
+    const cantidad = parseInt(cantidadInput.value);
+    if (isNaN(cantidad) || cantidad <= 0) {
+      showAlert("La cantidad para cada artículo debe ser mayor a 0.");
+      return;
+    }
+  }
+
+  // Verifica que se haya seleccionado una forma de pago
+  const formaPagoSeleccionada = document.querySelector("input[name='paymethod']:checked");
+  if (!formaPagoSeleccionada) {
+    showAlert("Debes seleccionar una forma de pago.");
+    return;
+  }
+
+  // Si todas las validaciones pasan, verifica los campos del modal
+  const modalCampos = document.querySelectorAll("#modal input:enabled");
+  let camposCompletos = true;
+  modalCampos.forEach((campo) => {
+    if (campo.value === "") {
+      camposCompletos = false;
+      return;
+    }
+  });
+
+  if (!camposCompletos) {
+    showAlert("Debes completar todos los campos habilitados en el modal.");
+    return;
+  }
+
+  // Si todas las validaciones pasan, puedes enviar el formulario o realizar otras acciones
+  showAlert("Compra realizada con éxito. ¡Gracias!");
+  // Aquí puedes agregar el código para enviar el formulario o realizar acciones adicionales.
+});
+
+function showAlert(message) {
+  const alertElement = document.createElement("div");
+  alertElement.className = "alert alert-danger";
+  alertElement.textContent = message;
+  alertContainer.appendChild(alertElement);
+
+  // Limpia el mensaje después de unos segundos
+  setTimeout(() => {
+    alertContainer.removeChild(alertElement);
+  }, 5000);
+}
 
 
   
