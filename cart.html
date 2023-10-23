@@ -177,14 +177,19 @@
           <br><hr>
           <h5>Forma de pago</h5><br>
           <div>
-          <p><span><a href="#modal" id="seleccionar_pago">Seleccionar</a></span></p>
-          <div class="valid-feedback">
-            Verificado
+
+
+        
+      <div class="col-sm-12">
+          <button id="btnTerminos" type="button" class="btn btn-link ps-0 terminos-requerido is-invalid" data-bs-toggle="modal" data-bs-target="#modalTerminos"><span><a href="#modal" id="seleccionar_pago">Seleccionar</a></span></button>
+            <div id="aviso" class="invalid-feedback d-none">
+              Debe seleccionar un método de pago.  
+            </div>
         </div>
-        <div class="invalid-feedback">
-          Ingrese su calle
-        </div>
+          
       </div>
+
+      
 
 
 
@@ -206,7 +211,7 @@
 
             <div>
               <label for="num">Número de tarjeta:</label>    
-              <input type="text" name="num" id="num" class="form-control"><br><br>
+              <input type="text" name="num" id="num" class="form-control" required><br><br>
               <div class="valid-feedback">
                 Verificado
             </div>
@@ -217,7 +222,7 @@
 
             <div>
               <label for="cod">Código de seguridad:</label>    
-              <input type="text" maxlength="4" name="cod" id="cod" class="form-control"><br><br>
+              <input type="text" maxlength="4" name="cod" id="cod" class="form-control" required><br><br>
               <div class="valid-feedback">
                 Verificado
             </div>
@@ -228,7 +233,7 @@
 
             <div>
               <label for="cod">Fecha de vencimiento (MM/AA):</label>    
-              <input type="text" name="date" id="date" class="form-control"> <br><br><hr>
+              <input type="text" name="date" id="date" class="form-control" required> <br><br><hr>
               <div class="valid-feedback">
                 Verificado
             </div>
@@ -242,7 +247,7 @@
 
             <div>
               <label for="num">Número de cuenta:</label>    
-              <input type="text" name="num" id="cuentanum" class="form-control">
+              <input type="text" name="num" id="cuentanum" class="form-control" required>
               <div class="valid-feedback">
                 Verificado
             </div>

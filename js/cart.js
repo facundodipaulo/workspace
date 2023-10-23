@@ -44,6 +44,7 @@ creditbtn.addEventListener("change", function () {
     cod.disabled = false;
     date.disabled = false;
 
+    cuentanum.value = "";
 
     cuentanum.disabled = true;
  
@@ -53,6 +54,10 @@ creditbtn.addEventListener("change", function () {
 bankbtn.addEventListener("change", function() {
   if (bankbtn.checked) {
     cuentanum.disabled = false;
+
+    num.value = "";
+    cod.value = "";
+    date.value = "";
 
     num.disabled = true;
     cod.disabled = true;
@@ -328,12 +333,13 @@ const tiposDeEnvio = document.getElementById("tiposDeEnvio");
     }
   }
 
+  const aviso = document.getElementById("aviso");
+
   // Verifica que se haya seleccionado una forma de pago
   const formaPagoSeleccionada = document.querySelector("input[name='paymethod']:checked");
   if (!formaPagoSeleccionada) {
     showAlert("Debes seleccionar una forma de pago.");
-    seleccionar_pago.classList.remove('is-valid');
-    seleccionar_pago.classList.add('is-invalid');
+    aviso.classList.remove('d-none');
     return;
   }
 
@@ -347,9 +353,15 @@ const tiposDeEnvio = document.getElementById("tiposDeEnvio");
     }
   });
 
+
   if (!camposCompletos) {
     showAlert("Debes completar todos los datos de pago.");
+    aviso.classList.remove('d-none');
     return;
+  }
+
+  if ((creditbtn.checked || bankbtn.checked) && camposCompletos) {
+    aviso.classList.add('d-none');
   }
 
   // Si todas las validaciones pasan, puedes enviar el formulario o realizar otras acciones
