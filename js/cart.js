@@ -154,7 +154,7 @@ fetch(url)
         <th><img src="${article.image}" class="cartproductimg"></th>
         <th>${article.name}</th>
         <th>${article.currency + " " + article.unitCost}</th>
-        <th><input type="number" min="1" required class="inputCant"></th>
+        <th><input type="number" min="1" required class="form-control inputCant " style="width: 20%"></th>
         <th class="totalPrice"></th>
       `;
 
@@ -170,7 +170,7 @@ fetch(url)
         <th>${producto.nombre}</th>
         <th>${producto.moneda + " " + producto.costo}</th>
         <th class="cuadradito">
-            <input type="number" min="1" required class="inputCant">
+            <input type="number" min="1" required class="form-control inputCant " style="width: 20%">
         </th>
         <th class="totalPrice"></th>
         <th><button class="btn btn-danger btnEliminar">

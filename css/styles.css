@@ -310,7 +310,7 @@ nav{
 .modal {
   display: none; /* Hidden by default */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 70px; /* Location of the box */
   padding-left: 15%;
   padding-right: 15%;
   width: 100%; /* Full width */
