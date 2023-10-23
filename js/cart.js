@@ -26,6 +26,8 @@ const cuentanum = document.getElementById("cuentanum");
 const num = document.getElementById("num");
 const cod = document.getElementById("cod");
 const date = document.getElementById("date");
+const finCompra = document.getElementById("finCompra");
+
 
     num.disabled = true;
     cod.disabled = true;
@@ -249,6 +251,44 @@ botonLimpiarLocalStorage.addEventListener("click", limpiarCarrito);
 
 actualizarSubtotales();
 
+const calle = document.getElementById("calle");
+const numero = document.getElementById("numero");
+const esquina = document.getElementById("esquina");
+
+finCompra.addEventListener("click", function (event) {
+  // Evita el envío del formulario si no pasa la validación
+  if (!formEnvio.checkValidity()) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  // Valida el campo de entrada de la calle
+  calle.addEventListener("input", function () {
+    if (calle.value === "") {
+      calle.classList.add('is-invalid');
+    } else {
+      calle.classList.remove('is-invalid');
+      calle.classList.add('is-valid');
+    }
+  });
+
+  numero.addEventListener("input", function () {
+    if (numero.value === "") {
+      numero.classList.add('is-invalid');
+    } else {
+      numero.classList.remove('is-invalid');
+      numero.classList.add('is-valid');
+    }
+  });
+
+  if (esquina.value === "") {
+  esquina.classList.add('is-invalid');
+  esquina.preventDefault(); // Evita el envío del formulario
+} else {
+  esquina.classList.remove('is-invalid');
+  esquina.classList.add('is-valid');
+}
+});
 
 
 
