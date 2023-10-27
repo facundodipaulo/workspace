@@ -128,7 +128,7 @@ function actualizarSubtotales() {
   const totalPriceElements = tablaTitulos.querySelectorAll(".totalPrice");
   totalPriceElements.forEach((totalPriceElement) => {
     const textoPrecio = totalPriceElement.textContent;
-    const numerosEncontrados = textoPrecio.match(/\d+/);
+    const numerosEncontrados = textoPrecio.match(/\d+/); //Extrae del precio la unidad monetaria y deja solo el numero
 
     if (numerosEncontrados) {
       const valorNumerico = parseFloat(numerosEncontrados[0]); // Obtén el primer número encontrado
@@ -252,7 +252,7 @@ fetch(url)
   actualizarSubtotales()
 }
 
-// Configura un evento de clic para el botón "limpiarLocalStorage"
+// Configura un evento de click para el botón "limpiarLocalStorage"
 botonLimpiarLocalStorage.addEventListener("click", limpiarCarrito);
 
 actualizarSubtotales();
@@ -343,7 +343,7 @@ const tiposDeEnvio = document.getElementById("tiposDeEnvio");
     return;
   }
 
-  // Si todas las validaciones pasan, verifica los campos del modal
+  // Verifica los campos del modal
   const modalCampos = document.querySelectorAll("#modal input:enabled");
   let camposCompletos = true;
   modalCampos.forEach((campo) => {
@@ -364,9 +364,9 @@ const tiposDeEnvio = document.getElementById("tiposDeEnvio");
     aviso.classList.add('d-none');
   }
 
-  // Si todas las validaciones pasan, puedes enviar el formulario o realizar otras acciones
+  // Si todas las validaciones pasan se muestra el mensaje de "Compra realizada"
   showAlert("Compra realizada con éxito. ¡Gracias!", true);
-  // Aquí puedes agregar el código para enviar el formulario o realizar acciones adicionales.
+ 
 });
 
 function showAlert(message, success = false) {
