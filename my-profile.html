@@ -63,10 +63,58 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container mx-6">
+      <div class="row">
+      <div class="col-md-6">
+        <br><h2>Perfil</h2><br>
       </div>
+      <div class="col-md-6">
+      </div>
+    </div>
+      <hr>
+      <form class="needs-validation" id="form" novalidate>
+        <div class="row">
+          <div class="col-md-3">
+        <div><label for="nombre1">Primer nombre*</label><br><input class="form-control" type="text" id="nombre1">
+          <div class="valid-feedback">
+            Verificado
+        </div>
+        <div class="invalid-feedback">
+          Ingrese su primer nombre
+        </div><br><br>
+        </div>
+        <div><label for="apellido1">Primer apellido*</label><br><input class="form-control" type="text" id="apellido1">
+          <div class="valid-feedback">
+            Verificado
+        </div>
+        <div class="invalid-feedback">
+          Ingrese su primer apellido
+        </div><br><br>
+        </div>
+        <label for="email">Email</label><br><input disabled class="form-control" type="text" id="email"><br><br>
+        <div><label for="tel">Teléfono de contacto*</label><br><input class="form-control" type="text" id="tel">
+          <div class="valid-feedback">
+            Verificado
+        </div>
+        <div class="invalid-feedback">
+          Ingrese su teléfono de contacto
+        </div><br><br>
+        </div>
+        </div>
+        <div class="col-md-3">
+        <label for="nombre2">Segundo nombre</label><input class="form-control" type="text" id="nombre2"><br><br>
+        <label for="apellido2">Segundo apellido</label><br><input class="form-control" type="text" id="apellido2"><br><br>
+        <label for="selectImage">Imagen de perfil</label><br><input class="form-control" type="file" id="selectImage">
+      </div>
+      <div class="col-md-3">
+        <div id="divImage">
+          <br><img src="https://wrrcsa.org/wp-content/uploads/Untitled-design-8.png" class="img-thumbnail" id="imagen" alt="Imagen de perfil"><br>
+        </div>
+      </div>
+      </div>
+      <br><hr>
+      <button class="btn btn-primary" id="guardarCambios" type="none">Guardar cambios</button>
+      </form>
     </div>
   </main>
   <footer class="text-muted">

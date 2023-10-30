@@ -348,3 +348,7 @@ nav{
 #alert-container {
   margin-left: 50%;
 }
+
+#imagen {
+  max-width: 300px;
+}
