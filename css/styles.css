@@ -228,16 +228,6 @@ body {
   padding-top: 56px;
 }
 
-.modo-noche {
-  background-color: #333;
-  color: #fff;
-}
-
-.modo-dia {
-  background-color: #fff;
-  color: #333;
-}
-
 .tablita {
   font-family: arial, sans-serif;
   width: 100%;
@@ -270,8 +260,6 @@ td, th {
       margin-right: 10%; 
   }
 }
-
-
 
 nav{
   top: 0; 
