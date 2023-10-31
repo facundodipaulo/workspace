@@ -5,6 +5,7 @@ const container = document.getElementById("cont");
 const productInfoUrl = `https://japceibal.github.io/emercado-api/cats_products/${selectedProductCategory}.json`;
 const catName = localStorage.getItem("catName");
 const buyButton = document.getElementById("buy");
+const alertContainer = document.getElementById('alert-container');
 let selectedProduct;
 
 function compra(selectedProduct) {
@@ -22,21 +23,21 @@ function compra(selectedProduct) {
   // Guarda la lista actualizada en el local storage
   localStorage.setItem("productosEnCarrito", JSON.stringify(productsInCart));
 
-  // Muestra un mensaje de éxito
-  const successMessage = document.createElement("div");
-  successMessage.textContent = "Agregado con éxito";
-  successMessage.style.position = "fixed";
-  successMessage.style.top = "50px";
-  successMessage.style.right = "10px";
-  successMessage.style.backgroundColor = "green";
-  successMessage.style.color = "white";
-  successMessage.style.padding = "10px";
-  document.body.appendChild(successMessage);
+  function showAlert(message, success = false) {
+    const alertElement = document.createElement("div");
+    alertElement.className = `alert ${success ? 'alert-success' : 'alert-danger'}`;
+    alertElement.textContent = message;
+    alertContainer.appendChild(alertElement);
+  
+    // Limpia el mensaje después de unos segundos
+    setTimeout(() => {
+      alertContainer.removeChild(alertElement);
+    }, 5000);
+  }
 
-  // Desaparece el mensaje después de 3 segundos (3000 milisegundos)
-  setTimeout(() => {
-    successMessage.remove();
-  }, 3000);
+  showAlert("Producto agregado al carrito.", true);
+  
+
 }
 
 fetch(productInfoUrl)
