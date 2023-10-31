@@ -14,6 +14,20 @@ const imagenMostrada = document.getElementById('imagen');
 const oldData = localStorage.getItem("dataArray");
 const oldDataArray = JSON.parse(oldData);
 const oldImage = localStorage.getItem("imagen");
+const alertContainer = document.getElementById('alert-container');
+
+
+function showAlert(message, success = false) {
+  const alertElement = document.createElement("div");
+  alertElement.className = `alert ${success ? 'alert-success' : 'alert-danger'}`;
+  alertElement.textContent = message;
+  alertContainer.appendChild(alertElement);
+
+  // Limpia el mensaje después de unos segundos
+  setTimeout(() => {
+    alertContainer.removeChild(alertElement);
+  }, 5000);
+}
 
 campoNombre1.value = oldDataArray[0];
 campoApellido1.value = oldDataArray[1];
@@ -40,7 +54,8 @@ imagenInput.addEventListener('change', (event) => {
 
     reader.readAsDataURL(file);
   } else {
-    alert('La imagen excede el tamaño permitido para almacenamiento en el localStorage.');
+    //alert('La imagen excede el tamaño permitido para almacenamiento en el localStorage.');
+    showAlert("La imagen excede el tamaño permitido de 5MB.")
     imagenInput.value = ''; // Limpiar el input del archivo si se excede el tamaño
   }
 });
@@ -80,5 +95,7 @@ function validacion(campo) {
     campo.classList.add('is-valid');
   }
 }
+
+
 
 
