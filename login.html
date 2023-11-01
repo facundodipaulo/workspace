@@ -15,25 +15,39 @@
 </head>
 
 <body>
+  <nav>
+    <img src="img/moon.png" id="icon">
+  </nav>
+
   <div class="container-center">
     <div class="brand-logo"></div>
           <div class="log-card">
               <h3 class="heading">Iniciar Sesión</h3>
               <form action="" id="form">
-                  <label for="user">USUARIO</label>
+                  <label for="user" class="user">USUARIO</label>
                   <input class="input" type="text" name="user" id="user" placeholder="ejemplo@gmail.com">
-                  <label for="password">CONTRASEÑA</label>
+                  <label for="password" class="password">CONTRASEÑA</label>
                   <input class="input" type="password" name="password" id="password" placeholder="Ingresar Contraseña">
                   <div class="checkbox-group"> <br>
                       <input type="checkbox" id="checkbox">
                       <label for="checkbox" class="label" id="checkbox">Recordar Usuario</label>
                   </div>
-                  <a href="index.html">
+                  <a href="index.html" id="boton">
                       <button class="button" id="button" onclick="iniciarSesion()">LOGIN</button> <br>
                   </a>
               </form>
           </div>
     </div>
+
+    <footer class="text-muted">
+      <div class="cont">
+        <p id="volver" class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p id="jap">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      </div>
+    </footer>
+
   <script src="js/login.js"></script>
 </body>
 
