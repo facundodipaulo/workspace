@@ -1,87 +1,107 @@
-body{
-  background-color: rgb(248, 249, 250);
-}
+/* Mantén las fuentes importadas */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
 
-@media (max-width: 760px) {
-  h1{
-    margin-top: -10%;
-    font-weight: bold;
-  }
-  h3{
-    font-size: 20px;
-  }
-  .cont{
-    margin-left: 5%;
-    margin-right: 5%;
-  }
-  .log-card {
-      max-width: 90%;
-      margin-top: 10%;
-    
-  }
-}
 
-.container-center {
+/* Mantén los estilos del cuerpo de la página */
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ecf0f3;
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  height: 50vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
-  text-align: center; /* Añade centrado de texto */
-  margin-bottom: 5%;
-}
-.log-card {
-  background-color: rgb(247, 245, 219);
-  font-family:sans-serif;
-  position: absolute;
-  width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
-  padding: 20px;
-  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  place-items: center;
+  overflow: hidden;
+  font-family: poppins;
 }
 
-.heading {
-  font-size: 28px;
-  font-weight: 800;
-}
-
-.input {
+/* Estilo para el contenedor del formulario */
+.container-center {
+  position: relative;
+  width: 350px;
+  height: 500px;
+  border-radius: 20px;
+  padding: 40px;
   box-sizing: border-box;
-  margin-bottom: 5px;
+  background: #ecf0f3;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+}
+
+/* Estilo para el logotipo */
+.brand-logo {
+  height: 100px;
+  width: 100px;
+  margin: auto;
+  border-radius: 50%;
+  background: url('logoJAP.png') center center no-repeat;
+  background-size: 100% auto;
+}
+
+/* Estilo para el título */
+.heading {
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #fa921c;
+  letter-spacing: 1px;
+}
+
+.inputs {
+  text-align: left;
+  margin-top: 30px;
+}
+
+label, input, button {
+  display: block;
   width: 100%;
+  padding: 0;
   border: none;
-  padding: 8px 16px;
-  background-color: transparent;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
-  font-weight: 600;
-  color: #2879f3;
+  outline: none;
+  box-sizing: border-box;
 }
 
-.checkbox-group {
-  color: black;
+label {
+  margin-bottom: 4px;
+}
+
+label:nth-of-type(2) {
+  margin-top: 12px;
+}
+
+input::placeholder {
+  color: gray;
+}
+
+
+/* Estilo para los elementos de entrada y etiquetas */
+.input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
   font-size: 14px;
-  font-weight: 500;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }
 
+/* Estilo para el botón */
 .button {
+  color: white;
   margin-top: 20px;
-  margin-bottom: 10px;
-  padding: 8px 16px;
-  border: none;
-  background-color: #2879f3;
-  color: rgb(255, 255, 255);
-  font-size: 16px;
-  font-weight: 700;
-  border-radius: 8px;
+  background: #f28f1d;
+  height: 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
 }
-button:hover{
-  background-color: green;
+
+.button:hover {
+  box-shadow: none;
+  background-color: #f2721d;
   transition: 0.5s;
 }
-.cont{
-  margin-left: 15%;
-  margin-right: 15%;
-}
+
