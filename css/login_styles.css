@@ -37,6 +37,7 @@ body {
   border-radius: 50%;
   background: url('logoJAP.png') center center no-repeat;
   background-size: 100% auto;
+  margin-top: -20px; 
 }
 
 /* Estilo para el título */
@@ -47,6 +48,7 @@ body {
   color: #fa921c;
   letter-spacing: 1px;
   text-align: center;
+  margin-bottom: 20px; 
 }
 
 .inputs {
@@ -55,12 +57,15 @@ body {
 }
 
 label, input, button {
-  display: block;
-  width: 100%;
   padding: 0;
   border: none;
   outline: none;
   box-sizing: border-box;
+}
+
+button, #user, #password {
+  display: block;
+  width: 100%;
 }
 
 label {
