@@ -5,7 +5,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -15,12 +14,16 @@
 </head>
 
 <body>
+
+  <!-- Barra de Navegación Responsiv. -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 position-fixed">
     <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
@@ -32,15 +35,17 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <div class="dropdown">
+
+          <li class="nav-item"> <!-- Botón de Menú desplegable. -->
+            <div class="dropdown"> 
               <button class="btn btn-secondary dropdown-toggle" type="button" id="data_user" data-bs-toggle="dropdown" aria-expanded="false">
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <!-- Menú desplegable. -->
                 <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
                 <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-                <li><a class="dropdown-item" href="#" id="toggleThemeButton">Cambiar tema</a>
-                </li> <li><a class="dropdown-item" href="#" id="cerrar_sesion">Cerrar sesión</a></li>
+                <li><a class="dropdown-item" href="#" id="toggleThemeButton">Cambiar tema</a></li>
+                <li><a class="dropdown-item" href="#" id="cerrar_sesion">Cerrar sesión</a></li>
               </ul>
             </div>
           </li>
@@ -48,51 +53,70 @@
       </div>
     </div>
   </nav>
+
   <main class="pb-5">
     <div class="text-center p-4">
+      <!-- Título de Categorías -->
       <h2>Categorías</h2>
       <p class="lead">Verás aquí todas las categorías del sitio.</p>
     </div>
-    <div class="container">
-      <div class="row">
+    <div class="container"> <!-- Contenedor Principal -->
+      <div class="row"> 
         <div class="col text-end">
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+            <!-- Filtro de orden Alfabetico -->
             <input type="radio" class="btn-check" name="options" id="sortAsc">
             <label class="btn btn-light" for="sortAsc">A-Z</label>
+
+            <!-- Filtro de orden Alfabetico Inverso -->
             <input type="radio" class="btn-check" name="options" id="sortDesc">
             <label class="btn btn-light" for="sortDesc">Z-A</label>
+
+            <!-- Filtro de Menor a Mayor y Mayor a Menor -->
             <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
             <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
           <div class="row container p-0 m-0">
             <div class="col">
               <p class="font-weight-normal text-end my-2">Cant.</p>
             </div>
-            <div class="col">
+            <div class="col"> <!-- Filtro de cantidad mínima -->
               <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
             </div>
-            <div class="col">
+            <div class="col"> <!-- Filtro de cantidad máxima -->
               <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
             </div>
             <div class="col-3 p-0">
               <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                <button class="btn btn-light btn-block" id="rangeFilterCount">
+                  <!-- Botón para aplicar filtros por cantidad -->
+                  Filtrar
+                </button>
+
+                <button class="btn btn-link btn-sm" id="clearRangeFilter">
+                  <!-- Botón para borrar filtros por cantidad -->
+                  Limpiar
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="list-group" id="cat-list-container">
+          <!-- Contenedor de productos a mostrar -->
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Pie de Página -->
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -113,5 +137,4 @@
   <script src="js/init.js"></script>
   <script src="js/categories.js"></script>
 </body>
-
 </html>

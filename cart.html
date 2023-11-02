@@ -15,14 +15,15 @@
 </head>
 
 <body>
-  <!-- Barra de Navegación -->
+  <!-- Barra de Navegación Responsiv -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 position-fixed">
     <div class="container"> 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <!-- Barra de Navegación Responsiv -->
+
+      <div class="collapse navbar-collapse" id="navbarNav">        
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Inicio</a>
@@ -36,10 +37,13 @@
           <li class="nav-item">
           </li>
         </ul>
-        <div class="dropdown"> <!-- Menú desplegable -->
+
+        <div class="dropdown"> 
           <button class="btn btn-secondary dropdown-toggle" type="button" id="data_user" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Botón de Menú desplegable. -->
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <!-- Menú desplegable -->
             <li><a class="dropdown-item" href="index.html">Inicio</a></li>
             <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
             <li><a class="dropdown-item" href="#" id="toggleThemeButton">Cambiar tema</a></li>
@@ -51,10 +55,11 @@
   </nav>
 
   <main>
-    <!-- Contenedor de Alerta -->
+    <!-- Contenedor para Avisos -->
     <div id="alert-container" class="alert fixed-top text-center"></div>
     <div class="container"> <!-- Carrito de Compras -->
       <div class="text-center p-4">
+        <!-- Título para Carrito de Compras -->
         <h4>Carrito de Compras</h4>
       </div>
       <div class="sub_titulo">
@@ -124,7 +129,7 @@
             </div>
             <div class="invalid-feedback">
               <!-- Aviso de Error -->
-              Ingrese su calle
+              Ingrese su número de puerta
             </div>
           </div>
 
@@ -138,7 +143,7 @@
             </div>
             <div class="invalid-feedback">
               <!-- Aviso de Error -->
-              Ingrese su calle
+              Ingrese la esquina de su calle
             </div>
           </div>
         </div>
@@ -236,7 +241,7 @@
               </div>
               <div class="invalid-feedback">
                 <!-- Aviso de Error -->
-                Ingrese su calle
+                Ingrese su número de tarjeta
               </div>
             </div>
             <div>
@@ -248,7 +253,7 @@
               </div>
               <div class="invalid-feedback">
                 <!-- Aviso de Error -->
-                Ingrese su calle
+                Ingrese su código de seguridad
               </div>
             </div>
             <div>
@@ -260,7 +265,7 @@
               </div>
               <div class="invalid-feedback">
                 <!-- Aviso de Error -->
-                Ingrese su calle
+                Ingrese la fecha de vencimiento de su tarjeta
               </div>
             </div>
 
@@ -279,7 +284,7 @@
               </div>
               <div class="invalid-feedback">
                 <!-- Aviso de Error -->
-                Ingrese su calle
+                Ingrese el número de su cuenta bancaria
               </div>
             </div>
           </form>

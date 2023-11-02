@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    //Se declaran las const
+    //Se declaran las constantes
     const button = document.getElementById('button');
     const checkbox = document.getElementById('checkbox');
     const campoUsuario = document.getElementById('user');
@@ -7,12 +7,12 @@ document.addEventListener("DOMContentLoaded", function() {
     let dataRecordar = localStorage.getItem('recordar');
     let usuarioGuardado = localStorage.getItem('usuario');
 
+    // Función para recordar datos de usuario.
     if (dataRecordar === true) {
         console.log(usuarioGuardado);
     }
 
-
-
+    // Función para cambiar Modo Día a Modo Noche y el Ícono de Luna a Sol. 
     var icon =  document.getElementById("icon");
     icon.onclick = function(){
         document.body.classList.toggle("dark-theme");
@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded", function() {
     
     function iniciarSesion() {
         
-        //Se declaran las const
+        // Se declaran las constantes.
     const usuario = document.getElementById('user').value;
     const contrasena = document.getElementById('password').value;
        
-        //previene continuar = campo vacio
+        // Previene continuar = campo vacio
         if (usuario === "" || contrasena === "") {
             alert("Por favor, complete todos los campos.");
             //Previeen continuar = falta @

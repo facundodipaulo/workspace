@@ -15,30 +15,41 @@
 </head>
 
 <body>
+  <!-- Ícono de Modo Dìa y Modo Noche. Inicia con la Luna. -->
   <nav>
     <img src="img/moon.png" id="icon">
   </nav>
 
-  <div class="container-center">
-    <div class="brand-logo"></div>
-          <div class="log-card">
-              <h3 class="heading">Iniciar Sesión</h3>
-              <form action="" id="form">
-                  <label for="user" class="user">USUARIO</label>
-                  <input class="input" type="text" name="user" id="user" placeholder="ejemplo@gmail.com">
-                  <label for="password" class="password">CONTRASEÑA</label>
-                  <input class="input" type="password" name="password" id="password" placeholder="Ingresar Contraseña">
-                  <div class="checkbox-group"> <br>
-                      <input type="checkbox" id="checkbox">
-                      <label for="checkbox" class="label" id="checkbox">Recordar Usuario</label>
-                  </div>
-                  <a href="index.html" id="boton">
-                      <button class="button" id="button" onclick="iniciarSesion()">LOGIN</button> <br>
-                  </a>
-              </form>
-          </div>
-    </div>
+  <!-- Formulario para Iniciar Sesión. -->
+<div class="container-center">
+  <div class="brand-logo"></div>
+  <div class="log-card">
+    <h3 class="heading">Iniciar Sesión</h3>
+    <form action="" id="form">
+      <!-- Campo Usuario -->
+      <label for="user" class="user">USUARIO</label>
+      <input class="input" type="text" name="user" id="user" placeholder="ejemplo@gmail.com">
 
+      <!-- Campo Contraseña -->
+      <label for="password" class="password">CONTRASEÑA</label>
+      <input class="input" type="password" name="password" id="password" placeholder="Ingresar Contraseña">
+
+      <div class="checkbox-group">
+        <!-- Checkbox para Recordar Usuario. -->
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox" class="label" id="checkbox">Recordar Usuario</label>
+      </div>
+
+      <!-- Botón de LOGIN. -->
+      <a href="index.html" id="boton">
+        <button class="button" id="button" onclick="iniciarSesion()">LOGIN</button>
+      </a>
+    </form>
+  </div>
+</div>
+
+
+    <!-- Pie de Página. -->
     <footer class="text-muted">
       <div class="cont">
         <p id="volver" class="float-end">
