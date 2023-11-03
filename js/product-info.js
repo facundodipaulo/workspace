@@ -204,7 +204,7 @@ fetch(productInfoUrl)
         } else {
             console.error("Producto no encontrado");
         }
-    })b 
+    }) 
     .catch(error => {
         console.error("Error al obtener la información del producto:", error);
     });

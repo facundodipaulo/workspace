@@ -340,3 +340,14 @@ nav{
 #imagen {
   max-width: 300px;
 }
+
+#btn_index {
+  background-color: #f28f1d;
+  border-color: transparent;
+}
+
+#btn_index:hover {
+
+background-color: #dc7500;
+
+}
