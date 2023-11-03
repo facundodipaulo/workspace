@@ -8,8 +8,12 @@ document.addEventListener("DOMContentLoaded", function() {
     let usuarioGuardado = localStorage.getItem('usuario');
 
     // Función para recordar datos de usuario.
-    if (dataRecordar === true) {
+    if (dataRecordar === "true" && usuarioGuardado) {
         console.log(usuarioGuardado);
+        campoUsuario.value = usuarioGuardado;
+    } else {
+        console.log("No hay usuario recordado");
+        campoUsuario.value.delete;
     }
 
     // Función para cambiar Modo Día a Modo Noche y el Ícono de Luna a Sol. 
@@ -39,7 +43,11 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("El Usuario debe contener el carácter @.");
             // Un exito continue
 
-        } else {
+        } else if (contrasena.length < 6) {
+            alert("La contraseña debe tener al menos 6 caracteres.");
+        }
+        
+        else {
             // Redirige al usuario a la página especificada después de la autenticación exitosa
             sessionStorage.setItem('isLoggedIn', 'true'); // Creamos estado "estáLoggeado" y lo hacemos verdadero
             window.localStorage.setItem('usuario', usuario); // Guarda el dato de usuario para utilizarlo en otro documento JS
