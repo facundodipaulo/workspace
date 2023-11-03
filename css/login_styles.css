@@ -28,7 +28,7 @@ body {
   box-sizing: border-box;
   background: var(--primary-color);
   box-shadow: 14px 14px 20px var(--third-color), -14px -14px 20px var(--fourth-color);
-  margin-bottom: 15%;
+  margin-bottom: 30%;
 }
 
 /* Estilo para el logotipo */
