@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  <!-- Barra de Navegación Responsiv -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark position-fixed">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -35,9 +36,12 @@
           </li>
         </ul>
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="data_user" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="data_user" 
+          data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Ícono de Menú desplegable -->
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <!-- Menú desplegable -->
             <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
             <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
             <li><a class="dropdown-item" href="#" id="toggleThemeButton">Cambiar tema</a></li>
@@ -49,63 +53,84 @@
   </nav>
   <div class="container">
     <div class="text-center p-4">
+      <!-- Título y Presentación de "Vender" -->
       <h2>Vender</h2>
       <p class="lead">Ingresa los datos del artículo a vender.</p>
     </div>
-    <div class="row justify-content-md-center">
+
+    <div class="row justify-content-md-center"> <!-- Contenedor Principal -->
       <div class="col-md-8 order-md-1">
+        <!-- Sección para Información de Producto -->
         <h4 class="mb-3">Información del producto</h4>
         <form class="needs-validation" id="sell-info">
           <div class="row">
+            <!-- Input para ingresar Nombre de Producto -->
             <div class="col-md-6 mb-3">
               <label for="productName">Nombre</label>
               <input type="text" class="form-control" id="productName" value="" name="productName">
               <div class="invalid-feedback">
+                <!-- Aviso de campo incompleto -->
                 Ingresa un nombre
               </div>
             </div>
           </div>
+
           <div class="row">
+            <!-- Input para ingresar Imágenes -->
             <div class="col-md-8 order-md-1">
               <label>Imágenes</label>
               <div class="needsclick dz-clickable" id="file-upload">
                 <div class="dz-message needsclick">
+                  <!-- Aviso de campo incompleto -->
                   Arrastra tus fotos aquí<br>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="row">
+            <!-- Input para agregar Descripción -->
             <div class="col-md-12 mb-3">
               <label for="productDescription">Descripción</label>
               <textarea name="productDescription" class="form-control" id="productDescription"></textarea>
             </div>
           </div>
+
           <div class="row">
+            <!-- Input para ingresar Costo -->
             <div class="col-md-3 mb-3">
               <label for="productCostInput">Costo</label>
-              <input type="number" name="productCostInput" class="form-control" id="productCostInput" placeholder="" required="" value="0"
-                min="0">
+              <input type="number" name="productCostInput" class="form-control" 
+              id="productCostInput" 
+              placeholder="" required="" value="0"min="0">
               <div class="invalid-feedback">
+                <!-- Aviso de campo incompleto -->
                 El costo debe ser mayor que 0.
               </div>
             </div>
+
             <div class="col-md-4 mb-3">
+              <!-- Opción para ingresar tipo de Moneda -->
               <label for="productCurrency">Moneda</label>
-              <select name="productCurrency" class="form-select custom-select d-block w-100" id="productCurrency" required>
+              <select name="productCurrency" class="form-select custom-select d-block w-100" 
+              id="productCurrency" required>
                 <option value="" hidden selected>Seleccionar moneda</option>
                 <option>Pesos Uruguayos (UYU)</option>
                 <option>Dólares (USD)</option>
               </select>
               <div class="invalid-feedback">
+                <!-- Aviso de campo inválido -->
                 Ingresa una categoría válida.
               </div>
             </div>
           </div>
+
           <div class="row">
+            <!-- Opción para ingresar Categoría -->
             <div class="col-md-7 mb-3">
               <label for="productCategory">Categoría</label>
-              <select name="productCategory" class="custom-select form-select d-block w-100" id="productCategory">
+              <select name="productCategory" class="custom-select form-select d-block w-100" 
+              id="productCategory">
                 <option value="">Elija la categoría...</option>
                 <option>Autos</option>
                 <option>Juguetes</option>
@@ -115,70 +140,102 @@
                 <option>Vestimenta</option>
               </select>
               <div class="invalid-feedback">
+                <!-- Aviso de campo inválido -->
                 Por favor ingresa una categoría válida.
               </div>
             </div>
           </div>
+
           <div class="row">
+            <!-- Input para ingresar Cantidad en Stock -->
             <div class="col-md-3 mb-3">
               <label for="productCountInput">Cantidad en stock</label>
-              <input type="number" name="productCountInput" class="form-control" id="productCountInput"  required value="1"
+              <input type="number" name="productCountInput" class="form-control" 
+              id="productCountInput"  required value="1"
                 min="0">
               <div class="invalid-feedback">
+                <!-- Aviso de campo incompleto -->
                 La cantidad es requerida.
               </div>
             </div>
           </div>
-          <hr class="mb-4">
+
+          <hr class="mb-4"> <!-- Separa secciones -->
+
+          <!-- Sección para seleccionar Tipo de Publicación -->
           <h5 class="mb-3">Tipo de publicación</h5>
           <div class="d-block my-3">
             <div class="custom-control custom-radio">
-              <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked=""
+              <!-- Publicación Gold -->
+              <input id="goldradio" name="publicationType" type="radio" 
+              class="custom-control-input" checked=""
                 required="">
               <label class="custom-control-label" for="goldradio">Gold (13%)</label>
             </div>
+
             <div class="custom-control custom-radio">
-              <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
+              <!-- Publicación Premium -->
+              <input id="premiumradio" name="publicationType" type="radio" 
+              class="custom-control-input" required="">
               <label class="custom-control-label" for="premiumradio">Premium (7%)</label>
             </div>
+
             <div class="custom-control custom-radio">
-              <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
+              <!-- Publicación Estándar -->
+              <input id="standardradio" name="publicationType" type="radio" 
+              class="custom-control-input" required="">
               <label class="custom-control-label" for="standardradio">Estándar (3%)</label>
             </div>
+
             <div class="row">
+              <!-- Enlace al modal de "Ver Condiciones" que se encuentra al final del código -->
               <button type="button" class="m-1 btn btn-link" data-bs-toggle="modal"
-                data-bs-target="#contidionsModal">Ver
-                condiciones</button>
+              data-bs-target="#contidionsModal">
+                Ver condiciones
+              </button>
             </div>
           </div>
-          <hr class="mb-4">
+
+          <hr class="mb-4"> <!-- Separa secciones -->
+
+          <!-- Sección para detalles de Costos -->
           <h4 class="mb-3">Costos</h4>
           <ul class="list-group mb-3">
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
+                <!-- Detalle de Precio -->
                 <h6 class="my-0">Precio</h6>
                 <small class="text-muted">Unitario del producto</small>
               </div>
               <span class="text-muted" id="productCostText">-</span>
             </li>
+
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
+                <!-- Detalle de porcentaje según Tipo de Publicación -->
                 <h6 class="my-0">Porcentaje</h6>
                 <small class="text-muted">Según el tipo de publicación</small>
               </div>
               <span class="text-muted" id="comissionText">-</span>
             </li>
+
             <li class="list-group-item d-flex justify-content-between">
+              <!-- Detalle del precio Total -->
               <span>Total ($)</span>
               <strong id="totalCostText">-</strong>
             </li>
-          </ul>
-          <hr class="mb-4">
+          </ul> 
+
+          <hr class="mb-4"> <!-- Separa secciones -->
+
+          <!-- Sección para botón de "Vender" -->
           <button class="btn btn-primary btn-lg" type="submit">Vender</button>
         </form>
       </div>
     </div>
   </div>
+
+  <!-- Piee de Página -->
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -189,9 +246,11 @@
   </footer>
 
   <div class="alert alert-primary-dismissible fade" id="alertResult" role="alert">
+    <!-- Contenedor para avisos de campos incompletos o errores -->
     <span id="resultSpan"></span>
   </div>
 
+  <!-- Modal de "Ver Condiciones" -->
   <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -201,18 +260,21 @@
         <div class="modal-body">
           <div class="container">
             <div class="row">
+              <!-- Detalle de producto Gold -->
               <h5 class="text-warning">Gold (13%)</h5>
               <p class="muted text-justify">Tu producto se verá de forma promocionada en portada, además de las
                 condiciones de Premium y Estándar.</p>
             </div>
             <hr>
             <div class="row">
+              <!-- Detalle de producto Premium -->
               <h5 class="text-primary">Premium (7%)</h5>
               <p class="muted text-justify">Se mostrará el producto en los primeros lugares de resultados de búsqueda,
                 así cómo cuando se ingrese a la categoría que pertenezca.</p>
             </div>
             <hr>
             <div class="row">
+              <!-- Detalle de producto Estandar -->
               <h5 class="text-secondary">Estándar (3%)</h5>
               <p class="muted text-justify">El producto se listará en la categoría correspondiente, así como en los
                 resultados de búsquedas que coincidan con las palabras claves en el nombre.</p>
@@ -220,11 +282,13 @@
           </div>
         </div>
         <div class="modal-footer">
+          <!-- Botón para cerrar Modal -->
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
   </div>
+  
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -233,6 +297,7 @@
       <div></div>
     </div>
   </div>
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>

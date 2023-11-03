@@ -1,4 +1,4 @@
-//Tomamos los datos de las id del localStorage
+// Tomamos los datos de las id del localStorage
 const selectedProductId = localStorage.getItem("prodID");
 const selectedProductCategory = localStorage.getItem("catID");
 const container = document.getElementById("cont");
@@ -46,10 +46,11 @@ fetch(productInfoUrl)
         
         const products = productData.products;
         selectedProduct = products.find(product => product.id === parseInt(selectedProductId));
-        //Creamos una constante con la posición en el array products del selectedProduct
+        // Creamos una constante con la posición en el array products del selectedProduct
         const selectedProductPosition = products.indexOf(selectedProduct);
 
-        //Función que, en el caso de que existan dos productos como mínimo en la categoría, muestra dos productos relacionados
+        /* Función que, en el caso de que existan dos productos como mínimo en la categoría, 
+        muestra dos productos relacionados */
         function relatedProducts (arrayPosition) {
             if (products.length > 1) {
             switch (arrayPosition) {
@@ -108,7 +109,8 @@ fetch(productInfoUrl)
                     console.log(`Error de posición del array para relatedProducts`);
             }
         } else {
-            //Si no existen al menos dos productos en el arreglo, se imprime el mensaje: "No se han encontrado productos relacionados"
+            /* Si no existen al menos dos productos en el arreglo, 
+            se imprime el mensaje: "No se han encontrado productos relacionados" */
             return  `
                     <h5>No se han encontrado productos relacionados</h5>
                     `
@@ -116,7 +118,7 @@ fetch(productInfoUrl)
         }
         const secondFetchUrl = `https://japceibal.github.io/emercado-api/products/${selectedProductId}.json`;
     
-            //Fetch para el carrusel
+            // Fetch para el carrusel
         fetch(secondFetchUrl)
           .then(response => response.json())
           .then(secondProductData => {
@@ -149,7 +151,8 @@ fetch(productInfoUrl)
         if (selectedProduct) {
             
             // Mostrar el nombre del producto en el contenedor
-            //Más abajo se llama a la función relatedProducts, utilizando la posicion del producto seleccionado en el array como parámetro
+            /* Más abajo se llama a la función relatedProducts, utilizando la posicion del producto 
+            seleccionado en el array como parámetro */
             container.innerHTML = `
             <h1>${selectedProduct.name}</h1> 
             <hr>
@@ -201,7 +204,7 @@ fetch(productInfoUrl)
         } else {
             console.error("Producto no encontrado");
         }
-    })
+    })b 
     .catch(error => {
         console.error("Error al obtener la información del producto:", error);
     });
@@ -269,7 +272,7 @@ fetch(productInfoUrl)
         }
     }
 
-    //Función que nos devuelve la fecha y hora actual en el formato del JSON
+    // Función que nos devuelve la fecha y hora actual en el formato del JSON
 
     function setDate () {
         const fechaHoraActual = new Date();
@@ -285,7 +288,7 @@ fetch(productInfoUrl)
     const usuario = window.localStorage.getItem("usuario");
 
     //Evento del botón para poder agregar el comentario deseado a la lista de comentarios con su respectivo puntaje y usando
-    //localStorage para recoger los datos de usuario 
+    // localStorage para recoger los datos de usuario 
 
     sendCommentBtn.addEventListener('click', function () {
 
