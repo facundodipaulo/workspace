@@ -7,6 +7,7 @@ const catName = localStorage.getItem("catName");
 const buyButton = document.getElementById("buy");
 const alertContainer = document.getElementById('alert-container');
 let selectedProduct;
+const relatedProductsURL = `https://japceibal.github.io/emercado-api/products/${selectedProductId}.json`;
 
 function compra(selectedProduct) {
   // Obtiene la lista de productos del local storage (si existe)
@@ -48,6 +49,7 @@ fetch(productInfoUrl)
         selectedProduct = products.find(product => product.id === parseInt(selectedProductId));
         // Creamos una constante con la posición en el array products del selectedProduct
         const selectedProductPosition = products.indexOf(selectedProduct);
+
 
         /* Función que, en el caso de que existan dos productos como mínimo en la categoría, 
         muestra dos productos relacionados */
@@ -109,7 +111,7 @@ fetch(productInfoUrl)
                     console.log(`Error de posición del array para relatedProducts`);
             }
         } else {
-            /* Si no existen al menos dos productos en el arreglo, 
+           /* Si no existen al menos dos productos en el arreglo, 
             se imprime el mensaje: "No se han encontrado productos relacionados" */
             return  `
                     <h5>No se han encontrado productos relacionados</h5>
@@ -123,7 +125,7 @@ fetch(productInfoUrl)
           .then(response => response.json())
           .then(secondProductData => {
             const images = secondProductData.images;
-            const productInfoContainer = document.getElementById('cont');
+            //const productInfoContainer = document.getElementById('cont');
             const carouselInner = document.querySelector('.carousel-inner');
         
             // Borrar el contenido interno del carrusel existente
@@ -146,6 +148,7 @@ fetch(productInfoUrl)
               carouselItem.appendChild(imageElement);
               carouselInner.appendChild(carouselItem);
             });
+
           });
         
         if (selectedProduct) {
