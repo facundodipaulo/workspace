@@ -132,10 +132,7 @@ fetch(productInfoUrl)
             <p class="tipoDeDato">Cantidad de vendidos:</p>
             <p>${selectedProduct.soldCount}</p>
             <br><br>
-            <p class="tipoDeDato">Relacionados:</p> 
-            <div class="card mb-3">
-            <div>
-            </div>
+            <p class="tipoDeDato">Relacionados:</p>
             `
 
         } else {
@@ -245,27 +242,31 @@ fetch(productInfoUrl)
 
     })
 
-    const relatedProductsContainer = document.getElementById('relatedProductsDiv');
-fetch(relatedProductsURL) // Consider using the URL defined at the beginning
-  .then(response => response.json())
-  .then(relatedProductData => {
-    if (relatedProductsContainer) {
-      relatedProductsContainer.innerHTML = ''; // Clear previous content
+    //Fetch que se encarga de los productos relacionados
+fetch(secondFetchUrl)
+    .then(response => response.json())
+    .then(relatedProductData => {
 
-      // Process related products data
-      relatedProductData.forEach(relatedProduct => {
-        // Create elements to display related product info
-        const relatedProductElement = document.createElement('div');
-        relatedProductElement.classList.add('related-product');
-        relatedProductElement.innerHTML = `<p>${relatedProduct.name}</p>`;
+        if (container) {
 
-        relatedProductsContainer.appendChild(relatedProductElement); // Append to the container
-      });
-    } else {
-      console.error("No se encontró el contenedor de productos relacionados en el DOM.");
-    }
+            container.innerHTML += `
+            <div class="card mb-3">
+              <div>
+                <p>${relatedProductData.relatedProducts[0].name}</p>
+                <img src="${relatedProductData.relatedProducts[0].image}" id="ilustracion">
+              </div><br>
+              <div>
+                <p>${relatedProductData.relatedProducts[1].name}</p>
+                <img src="${relatedProductData.relatedProducts[1].image}" id="ilustracion">
+              </div>
+            </div>
+            `;
+        } else {
+            console.error("El contenedor no se encontró en el DOM.");
+        }
+    })
+    .catch(error => {
+        console.error("Error al obtener la información del producto relacionado:", error);
+    });
+
   })
-  .catch(error => {
-    console.error("Error al obtener la información de los productos relacionados:", error);
-  });
-})
