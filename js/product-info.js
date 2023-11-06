@@ -1,3 +1,6 @@
+document.addEventListener('DOMContentLoaded', function() {
+
+
 // Tomamos los datos de las id del localStorage
 const selectedProductId = localStorage.getItem("prodID");
 const selectedProductCategory = localStorage.getItem("catID");
@@ -8,6 +11,7 @@ const buyButton = document.getElementById("buy");
 const alertContainer = document.getElementById('alert-container');
 let selectedProduct;
 const relatedProductsURL = `https://japceibal.github.io/emercado-api/products/${selectedProductId}.json`;
+const secondFetchUrl = `https://japceibal.github.io/emercado-api/products/${selectedProductId}.json`;
 
 function compra(selectedProduct) {
   // Obtiene la lista de productos del local storage (si existe)
@@ -47,78 +51,7 @@ fetch(productInfoUrl)
         
         const products = productData.products;
         selectedProduct = products.find(product => product.id === parseInt(selectedProductId));
-        // Creamos una constante con la posición en el array products del selectedProduct
-        const selectedProductPosition = products.indexOf(selectedProduct);
 
-
-        /* Función que, en el caso de que existan dos productos como mínimo en la categoría, 
-        muestra dos productos relacionados */
-        function relatedProducts (arrayPosition) {
-            if (products.length > 1) {
-            switch (arrayPosition) {
-                case 0:
-                return `<div>
-                        <p>${products[1].name}</p>
-                        <img src="${products[1].image}" id="ilustracion">
-                        </div>
-                        <div>
-                        <p>${products[2].name}</p>
-                        <img src="${products[2].image}" id="ilustracion">
-                        </div>
-                        `;
-            case 1:
-                return `<div>
-                        <p>${products[0].name}</p>
-                        <img src="${products[0].image}" id="ilustracion">
-                        </div>
-                        <div>
-                        <p>${products[2].name}</p>
-                        <img src="${products[2].image}" id="ilustracion">
-                        </div>
-                        `;
-            case 2:
-                return `<div>
-                        <p>${products[0].name}</p>
-                        <img src="${products[0].image}" id="ilustracion">
-                        </div>
-                        <div>
-                        <p>${products[1].name}</p>
-                        <img src="${products[1].image}" id="ilustracion">
-                        </div>
-                        `;
-            case 3:
-                return `<div>
-                        <p>${products[2].name}</p>
-                        <img src="${products[2].image}" id="ilustracion">
-                        </div>
-                        <div>
-                        <p>${products[1].name}</p>
-                        <img src="${products[1].image}" id="ilustracion">
-                        </div>
-                        `;
-            case 4:
-                return `<div>
-                        <p>${products[3].name}</p>
-                        <img src="${products[3].image}" id="ilustracion">
-                        </div>
-                        <div>
-                        <p>${products[2].name}</p>
-                        <img src="${products[2].image}" id="ilustracion">
-                        </div>
-                        `;
-            
-                default:
-                    console.log(`Error de posición del array para relatedProducts`);
-            }
-        } else {
-           /* Si no existen al menos dos productos en el arreglo, 
-            se imprime el mensaje: "No se han encontrado productos relacionados" */
-            return  `
-                    <h5>No se han encontrado productos relacionados</h5>
-                    `
-        }
-        }
-        const secondFetchUrl = `https://japceibal.github.io/emercado-api/products/${selectedProductId}.json`;
     
             // Fetch para el carrusel
         fetch(secondFetchUrl)
@@ -148,8 +81,9 @@ fetch(productInfoUrl)
               carouselItem.appendChild(imageElement);
               carouselInner.appendChild(carouselItem);
             });
+        });
 
-          });
+        
         
         if (selectedProduct) {
             
@@ -200,7 +134,7 @@ fetch(productInfoUrl)
             <br><br>
             <p class="tipoDeDato">Relacionados:</p> 
             <div class="card mb-3">
-            ${relatedProducts (selectedProductPosition)}
+            <div>
             </div>
             `
 
@@ -311,4 +245,27 @@ fetch(productInfoUrl)
 
     })
 
+    const relatedProductsContainer = document.getElementById('relatedProductsDiv');
+fetch(relatedProductsURL) // Consider using the URL defined at the beginning
+  .then(response => response.json())
+  .then(relatedProductData => {
+    if (relatedProductsContainer) {
+      relatedProductsContainer.innerHTML = ''; // Clear previous content
 
+      // Process related products data
+      relatedProductData.forEach(relatedProduct => {
+        // Create elements to display related product info
+        const relatedProductElement = document.createElement('div');
+        relatedProductElement.classList.add('related-product');
+        relatedProductElement.innerHTML = `<p>${relatedProduct.name}</p>`;
+
+        relatedProductsContainer.appendChild(relatedProductElement); // Append to the container
+      });
+    } else {
+      console.error("No se encontró el contenedor de productos relacionados en el DOM.");
+    }
+  })
+  .catch(error => {
+    console.error("Error al obtener la información de los productos relacionados:", error);
+  });
+})
