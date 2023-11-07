@@ -69,4 +69,18 @@ document.addEventListener("DOMContentLoaded", function() {
             recordar = false;
         }
     });
+
+    //mostrar contraseña
+    const passwordField = document.getElementById('password');
+    const showPasswordButton = document.getElementById('mostrar_contraseña');
+
+    showPasswordButton.addEventListener('click', function() {
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            showPasswordButton.innerHTML = '<i class="far fa-eye-slash"></i>';
+        } else {
+            passwordField.type = 'password';
+            showPasswordButton.innerHTML = '<i class="far fa-eye"></i>';
+        }
+    });
 });

@@ -187,3 +187,11 @@ nav{
   flex: 1;
   text-align: right;
 }
+
+#mostrar_contraseña {
+  cursor: pointer;
+  position: absolute;
+  top: 64.5%;
+  right: 55px; /* Ajusta el valor según tu preferencia para la distancia entre el campo y el ícono */
+
+}
