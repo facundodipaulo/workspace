@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const button = document.getElementById('button');
     const checkbox = document.getElementById('checkbox');
     const campoUsuario = document.getElementById('user');
+    const campoContrasena = document.getElementById('password');
     let recordar = false;
     let dataRecordar = localStorage.getItem('recordar');
     let usuarioGuardado = localStorage.getItem('usuario');
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         campoUsuario.value.delete;
     }
 
-    // Función para cambiar Modo Día a Modo Noche y el Ícono de Luna a Sol. 
+    // Función para cambiar Modo Día a Modo Noche y el Ícono de Luna a Sol.
     var icon =  document.getElementById("icon");
     icon.onclick = function(){
         document.body.classList.toggle("dark-theme");
@@ -27,30 +28,29 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     
-    
     function iniciarSesion() {
-        
         // Se declaran las constantes.
-    const usuario = document.getElementById('user').value;
-    const contrasena = document.getElementById('password').value;
-       
-        // Previene continuar = campo vacio
+        const usuario = campoUsuario.value;
+        const contrasena = campoContrasena.value;
+
+        // Previene continuar = campo vacío
         if (usuario === "" || contrasena === "") {
             alert("Por favor, complete todos los campos.");
-            //Previeen continuar = falta @
-
         } else if (usuario.indexOf("@") === -1) {
             alert("El Usuario debe contener el carácter @.");
-            // Un exito continue
-
         } else if (contrasena.length < 6) {
             alert("La contraseña debe tener al menos 6 caracteres.");
-        }
-        
-        else {
+        } else {
+            // Verifica si la casilla de recordar contraseña no está marcada
+            if (!checkbox.checked) {
+                // Si no está marcada, limpia los campos de usuario y contraseña
+                campoUsuario.value = '';
+                campoContrasena.value = '';
+            }
+
             // Redirige al usuario a la página especificada después de la autenticación exitosa
-            sessionStorage.setItem('isLoggedIn', 'true'); // Creamos estado "estáLoggeado" y lo hacemos verdadero
-            window.localStorage.setItem('usuario', usuario); // Guarda el dato de usuario para utilizarlo en otro documento JS
+            sessionStorage.setItem('isLoggedIn', 'true');
+            window.localStorage.setItem('usuario', usuario);
             window.localStorage.setItem('recordar', recordar);
             console.log(recordar);
             window.location.href = "index.html";
@@ -68,9 +68,5 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             recordar = false;
         }
-    })
-
-
+    });
 });
-
-
