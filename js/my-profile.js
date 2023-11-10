@@ -29,11 +29,13 @@ function showAlert(message, success = false) {
   }, 5000);
 }
 
-campoNombre1.value = oldDataArray[0];
-campoApellido1.value = oldDataArray[1];
-campoTel.value = oldDataArray[3];
-campoNombre2.value = oldDataArray[4];
-campoApellido2.value = oldDataArray[5];
+if (oldDataArray && oldDataArray.length > 0) {
+  campoNombre1.value = oldDataArray[0];
+  campoApellido1.value = oldDataArray[1];
+  campoTel.value = oldDataArray[3];
+  campoNombre2.value = oldDataArray[4];
+  campoApellido2.value = oldDataArray[5];
+}
 
 if (oldImage) {
   imagenMostrada.src = oldImage;
@@ -59,6 +61,8 @@ imagenInput.addEventListener('change', (event) => {
     imagenInput.value = ''; // Limpiar el input del archivo si se excede el tamaño
   }
 });
+
+console.log(usuario);
 
 campoEmail.value = usuario;
 
