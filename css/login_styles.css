@@ -92,6 +92,12 @@ input::placeholder {
   font-size: 14px;
   border-radius: 50px;
   box-shadow: inset 6px 6px 6px var(--third-color), inset -6px -6px 6px var(--fourth-color);
+  color: var(--secondary-color);
+  transition: color 0.2s;
+}
+
+.dark-theme .input {
+  color: #FFFFFF; 
 }
 
 
