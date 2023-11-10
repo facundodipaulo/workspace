@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-
 
 // Tomamos los datos de las id del localStorage
 const selectedProductId = localStorage.getItem("prodID");
@@ -268,5 +266,3 @@ fetch(secondFetchUrl)
     .catch(error => {
         console.error("Error al obtener la información del producto relacionado:", error);
     });
-
-  })
