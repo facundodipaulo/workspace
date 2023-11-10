@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     //Se declaran las constantes
+    const alertContainer = document.getElementById('alert-container');
     const button = document.getElementById('button');
     const checkbox = document.getElementById('checkbox');
     const campoUsuario = document.getElementById('user');
@@ -7,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let recordar = false;
     let dataRecordar = localStorage.getItem('recordar');
     let usuarioGuardado = localStorage.getItem('usuario');
+    
 
     // Función para recordar datos de usuario.
     if (dataRecordar === "true" && usuarioGuardado) {
@@ -16,6 +18,18 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("No hay usuario recordado");
         campoUsuario.value.delete;
     }
+
+    function showAlert(message, success = false) {
+        const alertElement = document.createElement("div");
+        alertElement.className = `alert ${success ? 'alert-success' : 'alert-danger'}`;
+        alertElement.textContent = message;
+        alertContainer.appendChild(alertElement);
+      
+        // Limpia el mensaje después de unos segundos
+        setTimeout(() => {
+          alertContainer.removeChild(alertElement);
+        }, 5000);
+      }
 
     // Función para cambiar Modo Día a Modo Noche y el Ícono de Luna a Sol.
     var icon =  document.getElementById("icon");
@@ -35,11 +49,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Previene continuar = campo vacío
         if (usuario === "" || contrasena === "") {
-            alert("Por favor, complete todos los campos.");
+            showAlert("Por favor, complete todos los campos.", false);
         } else if (usuario.indexOf("@") === -1) {
-            alert("El Usuario debe contener el carácter @.");
+            showAlert("El Usuario debe contener el carácter @.", false);
         } else if (contrasena.length < 6) {
-            alert("La contraseña debe tener al menos 6 caracteres.");
+            showAlert("La contraseña debe tener al menos 6 caracteres.", false);
         } else {
             // Verifica si la casilla de recordar contraseña no está marcada
             if (!checkbox.checked) {
