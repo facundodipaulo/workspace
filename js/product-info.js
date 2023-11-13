@@ -3,13 +3,12 @@
 const selectedProductId = localStorage.getItem("prodID");
 const selectedProductCategory = localStorage.getItem("catID");
 const container = document.getElementById("cont");
-const productInfoUrl = `https://japceibal.github.io/emercado-api/cats_products/${selectedProductCategory}.json`;
+const productInfoUrl = `http://localhost:3000/api/cats_products/${selectedProductCategory}.json`;
 const catName = localStorage.getItem("catName");
 const buyButton = document.getElementById("buy");
 const alertContainer = document.getElementById('alert-container');
 let selectedProduct;
-const relatedProductsURL = `https://japceibal.github.io/emercado-api/products/${selectedProductId}.json`;
-const secondFetchUrl = `https://japceibal.github.io/emercado-api/products/${selectedProductId}.json`;
+const secondFetchUrl = `http://localhost:3000/api/products/${selectedProductId}.json`;
 
 function compra(selectedProduct) {
   // Obtiene la lista de productos del local storage (si existe)

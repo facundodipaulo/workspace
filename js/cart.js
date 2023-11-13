@@ -1,5 +1,5 @@
 const divcarro = document.getElementById("carro");
-const url = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
+const url = "http://localhost:3000/api/user_cart/25801.json";
 const tablaTitulos = document.getElementById("tablaTitulos");
 const nuevoProductoImagen = localStorage.getItem("imagenProducto");
 const nuevoProductoNombre = localStorage.getItem("nombreProducto");

@@ -18,7 +18,7 @@ function cargarDatos(newCatName) {
     cat_name = newCatName;
     container.innerHTML = "";
 
-    const url = `https://japceibal.github.io/emercado-api/cats_products/${cat_name}.json`;
+    const url = `http://localhost:3000/api/cats_products/${cat_name}.json`;
 
     fetch(url)
         .then(response => response.json())
