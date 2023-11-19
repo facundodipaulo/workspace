@@ -6,19 +6,37 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 const PORT = 3000;
-const SECRET_KEY = 'your-secret-key'; // Cambia esto con tu clave secreta
+const SECRET_KEY = 'tu-clave-secreta'; // Cambia esto con tu clave secreta
 
 app.use(cors());
 app.use(express.json());
 
-// Servir archivos estáticos desde las carpetas 'js', 'css', 'img', 'webfonts' y 'emercado_api'
+// Middleware de autorización
+const authorizeMiddleware = (req, res, next) => {
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.status(401).json({ error: 'Token no proporcionado' });
+  }
+
+  jwt.verify(token, SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: 'Token no válido' });
+    }
+
+    req.user = decoded.user;
+    next();
+  });
+};
+
+app.use('/cart', authorizeMiddleware);
+
 app.use('/js', express.static(path.join(__dirname, 'js')));
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use('/webfonts', express.static(path.join(__dirname, 'webfonts')));
 app.use('/emercado_api', express.static(path.join(__dirname, 'emercado_api')));
 
-// Ruta para obtener un archivo HTML específico
 app.get('/:filename.html', (req, res) => {
   const filename = req.params.filename;
   const filePath = path.join(__dirname, `${filename}.html`);
@@ -30,7 +48,6 @@ app.get('/:filename.html', (req, res) => {
   }
 });
 
-// Ruta para obtener un archivo JSON específico o una lista de archivos en la subcarpeta
 app.get('/api/:subfolder/:filename?', (req, res) => {
   const subfolder = req.params.subfolder;
   const filename = req.params.filename;
@@ -52,14 +69,11 @@ app.get('/api/:subfolder/:filename?', (req, res) => {
   }
 });
 
-// Nuevo endpoint para autenticación y generación de token
 app.post('/login', (req, res) => {
   const { user, password } = req.body;
 
- 
   if (user === 'ElonMusk@god.com' && password === 'contraseña') {
-    // Autenticación exitosa, genera un token
-    const token = jwt.sign({ user }, SECRET_KEY, { expiresIn: '1h' }); // El token expirará en 1 hora
+    const token = jwt.sign({ user }, SECRET_KEY, { expiresIn: '1h' });
 
     res.json({ token, user });
   } else {
@@ -67,7 +81,6 @@ app.post('/login', (req, res) => {
   }
 });
 
-// Ruta para acceder al archivo index.html dentro de la carpeta global 'workspace'
 app.get('/index', (req, res) => {
   const indexPath = path.join(__dirname, 'index.html');
 
@@ -76,6 +89,14 @@ app.get('/index', (req, res) => {
   } else {
     res.status(404).json({ error: 'Archivo no encontrado' });
   }
+});
+
+app.get('/cart', (req, res) => {
+  const user = req.user;
+
+  // Lógica para la ruta /cart aquí
+
+  res.json({ message: 'Ruta /cart accesible solo para usuarios autenticados', user });
 });
 
 app.listen(PORT, () => {
