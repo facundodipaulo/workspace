@@ -56,7 +56,7 @@ app.get('/api/:subfolder/:filename?', (req, res) => {
 app.post('/login', (req, res) => {
   const { user, password } = req.body;
 
-  // Ejemplo simple de autenticación (reemplázalo con tu lógica real)
+ 
   if (user === 'ElonMusk@god.com' && password === 'contraseña') {
     // Autenticación exitosa, genera un token
     const token = jwt.sign({ user }, SECRET_KEY, { expiresIn: '1h' }); // El token expirará en 1 hora
