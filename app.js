@@ -101,28 +101,28 @@ app.get('/cart', (req, res) => {
 });
 
 
-const pool = mariadb.createPool({
+global.pool = mariadb.createPool({
   host: 'localhost',
-  user: 'Unnamed',
+  user: 'root',
   password: '1234',
   database: 'workspace',
   connectionLimit: 5
-});
-
-app.post('/guardarDatos', async (req, res) => {
+ });
+ 
+ app.post('/guardarDatos', async (req, res) => {
   try {
-    const { name, img, cost, moneda } = req.body;
-
-    const conn = await pool.getConnection();
-    await conn.query('INSERT INTO cart (name, img, cost, moneda) VALUES (?, ?, ?, ?)', [name, img, cost, moneda]);
-    conn.release();
-
-    res.status(200).json({ message: 'Datos guardados correctamente' });
+     const { name, img, cost, moneda } = req.body;
+ 
+     const conn = await pool.getConnection();
+     await conn.query('INSERT INTO cart (name, img, cost, moneda) VALUES (?, ?, ?, ?)', [name, img, cost, moneda]);
+     conn.release();
+ 
+     res.status(200).json({ message: 'Datos guardados correctamente' });
   } catch (error) {
-    console.error('Error al guardar datos:', error);
-    res.status(500).json({ error: 'Hubo un problema al guardar los datos' });
+     console.error('Error al guardar datos:', error);
+     res.status(500).json({ error: 'Hubo un problema al guardar los datos' });
   }
-});
+ });
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
