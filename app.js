@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const mariadb = require('mariadb');
 const jwt = require('jsonwebtoken');
 
 const app = express();
@@ -97,6 +98,30 @@ app.get('/cart', (req, res) => {
   // Lógica para la ruta /cart aquí
 
   res.json({ message: 'Ruta /cart accesible solo para usuarios autenticados', user });
+});
+
+
+const pool = mariadb.createPool({
+  host: 'localhost',
+  user: 'Unnamed',
+  password: '1234',
+  database: 'workspace',
+  connectionLimit: 5
+});
+
+app.post('/guardarDatos', async (req, res) => {
+  try {
+    const { name, img, cost, moneda } = req.body;
+
+    const conn = await pool.getConnection();
+    await conn.query('INSERT INTO cart (name, img, cost, moneda) VALUES (?, ?, ?, ?)', [name, img, cost, moneda]);
+    conn.release();
+
+    res.status(200).json({ message: 'Datos guardados correctamente' });
+  } catch (error) {
+    console.error('Error al guardar datos:', error);
+    res.status(500).json({ error: 'Hubo un problema al guardar los datos' });
+  }
 });
 
 app.listen(PORT, () => {

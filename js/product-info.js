@@ -20,7 +20,10 @@ function compra(selectedProduct) {
       nombre: selectedProduct.name,
       costo: selectedProduct.cost,
       moneda: selectedProduct.currency,
+
+      
   });
+
 
   // Guarda la lista actualizada en el local storage
   localStorage.setItem("productosEnCarrito", JSON.stringify(productsInCart));
@@ -38,6 +41,44 @@ function compra(selectedProduct) {
   }
 
   showAlert("Producto agregado al carrito.", true);
+
+    const name = selectedProduct.name;
+    const img = selectedProduct.image;
+    const cost = selectedProduct.cost;
+    const moneda = selectedProduct.currency;
+
+    console.log(name);
+    console.log(img);
+    console.log(cost);
+    console.log(moneda);
+  
+    const datos = {
+      name,
+      img,
+      cost,
+      moneda
+    };
+  
+    fetch('http://localhost:3000/guardarDatos', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(datos)
+})
+.then(response => {
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+})
+.then(data => {
+  console.log('Datos enviados correctamente:', data);
+})
+.catch(error => {
+  console.error('Hubo un problema al enviar los datos:', error);
+});
+
   
 
 }
